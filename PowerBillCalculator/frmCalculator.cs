@@ -10,23 +10,31 @@ using System.Windows.Forms;
 
 namespace PowerBillCalculator
 {
+    /*
+     * Author: DongMing Hu
+     * Date: Feb. 20, 2019
+     * Purpose: Calculate power bill for 3 types of users
+     * 
+     */
     public partial class frmCalculator : Form
     {
-        const double RATE_RESIDENTIAL = 0.052;
-        const double RATE_COMMERCIAL = 0.045;
-        const double PH_INDUSTRIAL = 0.065;
-        const double OP_INDUSTRIAL = 0.028;
-        double totalAmt;
+        const double RATE_RESIDENTIAL = 0.052;  // rate for residentital user
+        const double RATE_COMMERCIAL = 0.045;  // rate for commercial user
+        const double PH_INDUSTRIAL = 0.065;  // peak hour rate for industrial user
+        const double OP_INDUSTRIAL = 0.028; // off peak rate for industrial user
+        double totalAmt;  // variable to save the total charge for a user
         public frmCalculator()
         {
             InitializeComponent();
         }
 
+        // exit button clicked: close app 
         private void btnExit_Click(object sender, EventArgs e)
         {
             Close();
         }
 
+        // reset button clicked: erase all text boxes
         private void btnReset_Click(object sender, EventArgs e)
         {
             // grab all rad and txt, iterate through them, clear all contents
@@ -46,32 +54,35 @@ namespace PowerBillCalculator
             }
         }
 
+        // calculate button clicked: do calculation, show result(s)
         private void btnCalculate_Click(object sender, EventArgs e)
         {
-            grpForIndusAmt.Visible = false;  // hide group for indust
+            grpForIndusAmt.Visible = false;  // hide outputs boxes only designed for industrial users
 
-            // extract usage from textbox, todo: validation
             double usage = 0;
+
+            // if not industrial user, extract total usage from text box, do validation to make sure it's a non-negative integer
             if (!radIndustrial.Checked)
             {
-                if (IsInteger(txtUsage.Text))
+                if (Validator.TBHasNonNegativeInt(txtUsage,"Usage"))
                     usage = Convert.ToDouble(txtUsage.Text);
-                else
-                    MessageBox.Show("Hours needs to be whole number");
             }
-            // todo: validate to make sure radio is checked
+
+            // if residential user, use residential calculation method
             if (radResidential.Checked)
-                totalAmt = calcResi(usage);  // use residential method   
+                totalAmt = CalculateResidential(usage);
+            // if commercial user, use commercial calculation method
             else if (radCommercial.Checked)
-                totalAmt = calcComm(usage); // use commercial method
+                totalAmt = CalculateCommercial(usage);
+            // if industrial user, extract peak hour usage and off peak usage from text box, do validation, do calculation
             else
             {
                 // todo: validation
                 double peakUsage = Convert.ToDouble(txtPeakUsage.Text);
                 double opUsage = Convert.ToDouble(txtOPUsage.Text);
                 double peakAmt = 0, opAmt = 0;
-                totalAmt = calcIndus(peakUsage,opUsage,out peakAmt,out opAmt);  // use industrial method
-                // output separate use charges
+                totalAmt = CalculateIndustrial(peakUsage,opUsage,out peakAmt,out opAmt);  // use industrial method
+                // output peak & op charges separately
                 grpForIndusAmt.Visible = true;
                 txtOPCharge.Text = opAmt.ToString("c");
                 txtPeakCharge.Text = peakAmt.ToString("c");
@@ -80,12 +91,12 @@ namespace PowerBillCalculator
         }
 
         //--------------Methods Area--------------------//
-        private double calcResi(double usage)
+        private double CalculateResidential(double usage)
         {
             return 6 + usage * RATE_RESIDENTIAL;
         }
 
-        private double calcComm(double usage)
+        private double CalculateCommercial(double usage)
         {
             if (usage <= 1000)
                 totalAmt = 60;
@@ -94,7 +105,7 @@ namespace PowerBillCalculator
             return totalAmt;
         }
 
-        private double calcIndus(double peakUse, double opUse, out double pAmt, out double opAmt)
+        private double CalculateIndustrial(double peakUse, double opUse, out double pAmt, out double opAmt)
         {
             if (peakUse <= 1000)
                 pAmt = 76;
@@ -128,6 +139,7 @@ namespace PowerBillCalculator
             {
                 grpForIndustrial.Visible = true;
                 grpForUsage.Visible = false;
+                txtPeakUsage.Focus();
             } else
             {
                 grpForIndustrial.Visible = false;
@@ -137,12 +149,19 @@ namespace PowerBillCalculator
 
         private void radCommercial_CheckedChanged(object sender, EventArgs e)
         {
+            txtUsage.Focus();
             btnReset_Click(sender, e);
         }
 
         private void radResidential_CheckedChanged(object sender, EventArgs e)
         {
+            txtUsage.Focus();
             btnReset_Click(sender, e);
+        }
+
+        private void frmCalculator_Load(object sender, EventArgs e)
+        {
+            txtUsage.Focus();
         }
     }
 }

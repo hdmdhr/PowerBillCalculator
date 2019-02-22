@@ -319,6 +319,7 @@
             this.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.Name = "frmCalculator";
             this.Text = "Power Bill Calculator";
+            this.Load += new System.EventHandler(this.frmCalculator_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.grpForUsage.ResumeLayout(false);

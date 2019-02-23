@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace PowerBillCalculator
 {
@@ -18,11 +19,24 @@ namespace PowerBillCalculator
      */
     public partial class frmCalculator : Form
     {
+        // -------------- Form-Level Declaration Area -------------------------//
+
         const double RATE_RESIDENTIAL = 0.052;  // rate for residentital user
         const double RATE_COMMERCIAL = 0.045;  // rate for commercial user
         const double PH_INDUSTRIAL = 0.065;  // peak hour rate for industrial user
         const double OP_INDUSTRIAL = 0.028; // off peak rate for industrial user
-        double totalAmt;  // variable to save the total charge for a user
+
+        const double BASE_RESIDENTIAL = 6.00;  // basic charge for residential user
+        const double BASE_COMMERCIAL = 60.00;  // basic charge for commercial user
+        const double PH_BASE_INDUSTRIAL = 76.00;  // basic charge for industrial peak hour use
+        const double OP_BASE_INDUSTRIAL = 40.00;  // basic charge for industrial off peak use
+
+        const double BASE_USAGE_KWH = 1000;  // usage amount that basic charge covers
+
+        double totalAmt = 0;  // variable to save the total charge for a user
+
+        //------------------------ END -------------------------------------//
+
         public frmCalculator()
         {
             InitializeComponent();
@@ -37,131 +51,139 @@ namespace PowerBillCalculator
         // reset button clicked: erase all text boxes
         private void btnReset_Click(object sender, EventArgs e)
         {
-            // grab all rad and txt, iterate through them, clear all contents
+            // iterate through all text boxes, clear all contents
             foreach (Control c in Controls)
             {
                 foreach (Control childc in c.Controls)
                 {
                     if (childc is TextBox)
                     {
-                        ((TextBox)childc).Text = "";
+                        ((TextBox)childc).Clear();
                     }
                 }
                 if (c is TextBox)
                 {
-                    ((TextBox)c).Text = "";
+                    ((TextBox)c).Clear();
                 }
             }
         }
 
-        // calculate button clicked: do calculation, show result(s)
+        // calculate button clicked: do calculation based on user type, show result(s)
         private void btnCalculate_Click(object sender, EventArgs e)
         {
-            grpForIndusAmt.Visible = false;  // hide outputs boxes only designed for industrial users
-
-            double usage = 0;
-
-            // if not industrial user, extract total usage from text box, do validation to make sure it's a non-negative integer
+            // if not industrial user, extract total usage from text box after validation
             if (!radIndustrial.Checked)
             {
-                if (Validator.TBHasNonNegativeInt(txtUsage,"Usage"))
-                    usage = Convert.ToDouble(txtUsage.Text);
+                if (Validator.TBHasNonNegativeInt(txtUsage, "Usage"))
+                {
+                    double usage = Convert.ToDouble(txtUsage.Text);
+                    // if residential user, use residential calculation method, show result
+                    if (radResidential.Checked)
+                    {
+                        totalAmt = CalculateResidential(usage);
+                        txtTotal.Text = totalAmt.ToString("c");
+                    }
+                    // if commercial user, use commercial calculation method, show result
+                    else if (radCommercial.Checked)
+                    {
+                        totalAmt = CalculateCommercial(usage);
+                        txtTotal.Text = totalAmt.ToString("c");
+                    }
+                }
             }
-
-            // if residential user, use residential calculation method
-            if (radResidential.Checked)
-                totalAmt = CalculateResidential(usage);
-            // if commercial user, use commercial calculation method
-            else if (radCommercial.Checked)
-                totalAmt = CalculateCommercial(usage);
-            // if industrial user, extract peak hour usage and off peak usage from text box, do validation, do calculation
+            // if industrial user, extract peak hour usage and off peak usage from text box after validation, do calculation, show result
             else
             {
-                // todo: validation
-                double peakUsage = Convert.ToDouble(txtPeakUsage.Text);
-                double opUsage = Convert.ToDouble(txtOPUsage.Text);
-                double peakAmt = 0, opAmt = 0;
-                totalAmt = CalculateIndustrial(peakUsage,opUsage,out peakAmt,out opAmt);  // use industrial method
-                // output peak & op charges separately
-                grpForIndusAmt.Visible = true;
-                txtOPCharge.Text = opAmt.ToString("c");
-                txtPeakCharge.Text = peakAmt.ToString("c");
+                if (Validator.TBHasNonNegativeInt(txtPeakUsage, "Peak Hour Usage") && Validator.TBHasNonNegativeInt(txtOPUsage, "Off Peak Usage"))
+                {
+                    double peakUsage = Convert.ToDouble(txtPeakUsage.Text);
+                    double opUsage = Convert.ToDouble(txtOPUsage.Text);
+
+                    totalAmt = CalculateIndustrial(peakUsage, opUsage, out double peakAmt, out double opAmt);  // use industrial method
+
+                    // output peak & op charge amounts separately
+                    grpForIndusAmt.Visible = true;
+                    txtOPCharge.Text = opAmt.ToString("c");
+                    txtPeakCharge.Text = peakAmt.ToString("c");
+                    txtTotal.Text = totalAmt.ToString("c");
+                }
             }
-            txtTotal.Text = totalAmt.ToString("c");
         }
 
-        //--------------Methods Area--------------------//
+        //-------------- Methods Area --------------------//
+
+        //  method for residential user
         private double CalculateResidential(double usage)
         {
-            return 6 + usage * RATE_RESIDENTIAL;
+            return BASE_RESIDENTIAL + usage * RATE_RESIDENTIAL;
         }
 
+        //  method for commercial user
         private double CalculateCommercial(double usage)
         {
-            if (usage <= 1000)
-                totalAmt = 60;
+            if (usage <= BASE_USAGE_KWH)
+                totalAmt = BASE_COMMERCIAL;
             else
-                totalAmt = 60 + (usage - 1000) * RATE_COMMERCIAL;
+                totalAmt = BASE_COMMERCIAL + (usage - BASE_USAGE_KWH) * RATE_COMMERCIAL;
+
             return totalAmt;
         }
 
-        private double CalculateIndustrial(double peakUse, double opUse, out double pAmt, out double opAmt)
+        // method for industrial user
+        private double CalculateIndustrial(double peakUse, double opUse, out double peakAmt, out double opAmt)
         {
-            if (peakUse <= 1000)
-                pAmt = 76;
+            if (peakUse <= BASE_USAGE_KWH)
+                peakAmt = PH_BASE_INDUSTRIAL;
             else
-                pAmt = 76 + (peakUse - 1000) * PH_INDUSTRIAL;
+                peakAmt = PH_BASE_INDUSTRIAL + (peakUse - BASE_USAGE_KWH) * PH_INDUSTRIAL;
 
-            if (opUse <= 1000)
-                opAmt = 40;
+            if (opUse <= BASE_USAGE_KWH)
+                opAmt = OP_BASE_INDUSTRIAL;
             else
-                opAmt = 40 + (opUse - 1000) * OP_INDUSTRIAL;
+                opAmt = OP_BASE_INDUSTRIAL + (opUse - BASE_USAGE_KWH) * OP_INDUSTRIAL;
 
-            return pAmt + opAmt;
+            return peakAmt + opAmt;
         }
 
-        public static bool IsInteger(string input)
-        {
-            int myNum;
-            if (Int32.TryParse(input, out myNum))
-                return true;
-            else
-                return false;
-        }
+        //------------------------ END -------------------------//
 
-        //------------------------------------------------//
-
+        //  industrial radio button checked or unchecked: hide and show corresponding groupbox
         private void radIndustrial_CheckedChanged(object sender, EventArgs e)
         {
-            // hide and show corresponding groupbox
-            RadioButton rad = (RadioButton)sender;
-            if (rad.Checked)
+            RadioButton radio = (RadioButton)sender;
+            if (radio.Checked)
             {
                 grpForIndustrial.Visible = true;
                 grpForUsage.Visible = false;
                 txtPeakUsage.Focus();
-            } else
+            }
+            else
             {
                 grpForIndustrial.Visible = false;
+                grpForIndusAmt.Visible = false;
                 grpForUsage.Visible = true;
+                txtUsage.Focus();
             }
         }
 
+        //  commercial radio button checked or unchecked: focus usage textbox, reset all textboxes
         private void radCommercial_CheckedChanged(object sender, EventArgs e)
         {
             txtUsage.Focus();
             btnReset_Click(sender, e);
         }
 
+        //  residential radio button checked or unchecked: focus usage textbox, reset all textboxes
         private void radResidential_CheckedChanged(object sender, EventArgs e)
         {
             txtUsage.Focus();
             btnReset_Click(sender, e);
         }
 
+        // form loaded: focus on usage textbox
         private void frmCalculator_Load(object sender, EventArgs e)
         {
-            txtUsage.Focus();
+            ActiveControl = txtUsage;  // focus on a textbox when form loaded
         }
     }
 }

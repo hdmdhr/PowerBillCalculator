@@ -7,10 +7,17 @@ using System.Windows.Forms;
 
 namespace PowerBillCalculator
 {
+    /*
+     * Author: DongMing Hu
+     * Date: Feb. 22, 2019
+     * Purpose: A class contains validation method to test if a textbox has a non-negative integer.
+     * 
+     */
+
     class Validator
     {
         /// <summary>
-        /// Validate a TextBox to have a non-negative integer.
+        /// Test if a TextBox have a non-negative integer value, return bool.
         /// </summary>
         /// <param name="tb">TextBox</param>
         /// <param name="txtBoxName">Name for the TextBox</param>

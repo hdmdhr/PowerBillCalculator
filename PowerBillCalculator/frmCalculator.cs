@@ -21,19 +21,19 @@ namespace PowerBillCalculator
     {
         // -------------- Form-Level Declaration Area -------------------------//
 
-        const double RATE_RESIDENTIAL = 0.052;  // rate for residentital user
-        const double RATE_COMMERCIAL = 0.045;  // rate for commercial user
-        const double PH_INDUSTRIAL = 0.065;  // peak hour rate for industrial user
-        const double OP_INDUSTRIAL = 0.028; // off peak rate for industrial user
+        private const double RATE_RESIDENTIAL = 0.052;  // rate for residentital user
+        private const double RATE_COMMERCIAL = 0.045;  // rate for commercial user
+        private const double PH_INDUSTRIAL = 0.065;  // peak hour rate for industrial user
+        private const double OP_INDUSTRIAL = 0.028; // off peak rate for industrial user
 
-        const double BASE_RESIDENTIAL = 6.00;  // basic charge for residential user
-        const double BASE_COMMERCIAL = 60.00;  // basic charge for commercial user
-        const double PH_BASE_INDUSTRIAL = 76.00;  // basic charge for industrial peak hour use
-        const double OP_BASE_INDUSTRIAL = 40.00;  // basic charge for industrial off peak use
+        private const double BASE_RESIDENTIAL = 6.00;  // basic charge for residential user
+        private const double BASE_COMMERCIAL = 60.00;  // basic charge for commercial user
+        private const double PH_BASE_INDUSTRIAL = 76.00;  // basic charge for industrial peak hour use
+        private const double OP_BASE_INDUSTRIAL = 40.00;  // basic charge for industrial off peak use
 
-        const double BASE_USAGE_KWH = 1000;  // usage amount that basic charge covers
+        private const double BASE_USAGE_KWH = 1000;  // usage amount that basic charge covers
 
-        double totalAmt = 0;  // variable to save the total charge for a user
+        private double totalAmt = 0;  // variable to save the total charge for a user
 
         //------------------------ END -------------------------------------//
 
@@ -68,30 +68,28 @@ namespace PowerBillCalculator
             }
         }
 
-        // calculate button clicked: do calculation based on user type, show result(s)
+        // calculate button clicked: do validation, do calculation based on user type, show result(s)
         private void btnCalculate_Click(object sender, EventArgs e)
         {
-            // if not industrial user, extract total usage from text box after validation
+            // if not industrial user (residential or commercial), after validation, extract input, do calculation, show result
             if (!radIndustrial.Checked)
             {
                 if (Validator.TBHasNonNegativeInt(txtUsage, "Usage"))
                 {
                     double usage = Convert.ToDouble(txtUsage.Text);
-                    // if residential user, use residential calculation method, show result
+                    // if residential user, do calculation use residential method
                     if (radResidential.Checked)
-                    {
                         totalAmt = CalculateResidential(usage);
-                        txtTotal.Text = totalAmt.ToString("c");
-                    }
-                    // if commercial user, use commercial calculation method, show result
+
+                    // if commercial user, do calculation use commercial method
                     else if (radCommercial.Checked)
-                    {
                         totalAmt = CalculateCommercial(usage);
-                        txtTotal.Text = totalAmt.ToString("c");
-                    }
+
+                    txtTotal.Text = totalAmt.ToString("c");
+                    txtUsage.SelectAll();  // select all text in usage textbox for entering next user
                 }
             }
-            // if industrial user, extract peak hour usage and off peak usage from text box after validation, do calculation, show result
+            // if industrial user, after validation, extract inputs, do calculation, show results
             else
             {
                 if (Validator.TBHasNonNegativeInt(txtPeakUsage, "Peak Hour Usage") && Validator.TBHasNonNegativeInt(txtOPUsage, "Off Peak Usage"))
@@ -101,16 +99,20 @@ namespace PowerBillCalculator
 
                     totalAmt = CalculateIndustrial(peakUsage, opUsage, out double peakAmt, out double opAmt);  // use industrial method
 
-                    // output peak & op charge amounts separately
+                    // output peak & op & total amount separately
                     grpForIndusAmt.Visible = true;
-                    txtOPCharge.Text = opAmt.ToString("c");
                     txtPeakCharge.Text = peakAmt.ToString("c");
+                    txtOPCharge.Text = opAmt.ToString("c");
                     txtTotal.Text = totalAmt.ToString("c");
+
+                    // select all text in peak hour usage textbox for entering next user
+                    txtPeakUsage.Focus();
+                    txtPeakUsage.SelectAll();
                 }
             }
         }
 
-        //-------------- Methods Area --------------------//
+        //-------------- Calculation Methods Area --------------------//
 
         //  method for residential user
         private double CalculateResidential(double usage)

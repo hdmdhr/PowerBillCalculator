@@ -187,5 +187,11 @@ namespace PowerBillCalculator
         {
             ActiveControl = txtUsage;  // focus on a textbox when form loaded
         }
+
+        // add button clicked: add new customer to list, write list to file
+        private void btnAddCust_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

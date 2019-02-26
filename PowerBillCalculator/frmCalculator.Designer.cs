@@ -51,10 +51,18 @@
             this.txtPeakCharge = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtCustName = new System.Windows.Forms.TextBox();
+            this.txtAcctNum = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.btnAddCust = new System.Windows.Forms.Button();
+            this.lstCustomer = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             this.grpForUsage.SuspendLayout();
             this.grpForIndustrial.SuspendLayout();
             this.grpForIndusAmt.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -78,7 +86,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 15.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(62, 64);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(724, 67);
+            this.groupBox1.Size = new System.Drawing.Size(771, 67);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Customer Type";
@@ -87,7 +95,7 @@
             // 
             this.radIndustrial.AutoSize = true;
             this.radIndustrial.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radIndustrial.Location = new System.Drawing.Point(598, 33);
+            this.radIndustrial.Location = new System.Drawing.Point(634, 33);
             this.radIndustrial.Name = "radIndustrial";
             this.radIndustrial.Size = new System.Drawing.Size(116, 32);
             this.radIndustrial.TabIndex = 0;
@@ -99,7 +107,7 @@
             // 
             this.radCommercial.AutoSize = true;
             this.radCommercial.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radCommercial.Location = new System.Drawing.Point(294, 33);
+            this.radCommercial.Location = new System.Drawing.Point(322, 33);
             this.radCommercial.Name = "radCommercial";
             this.radCommercial.Size = new System.Drawing.Size(144, 32);
             this.radCommercial.TabIndex = 0;
@@ -112,7 +120,7 @@
             this.radResidential.AutoSize = true;
             this.radResidential.Checked = true;
             this.radResidential.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radResidential.Location = new System.Drawing.Point(0, 33);
+            this.radResidential.Location = new System.Drawing.Point(22, 33);
             this.radResidential.Name = "radResidential";
             this.radResidential.Size = new System.Drawing.Size(132, 32);
             this.radResidential.TabIndex = 0;
@@ -124,10 +132,10 @@
             // btnCalculate
             // 
             this.btnCalculate.AutoSize = true;
-            this.btnCalculate.Font = new System.Drawing.Font("Microsoft YaHei UI", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCalculate.Location = new System.Drawing.Point(506, 641);
+            this.btnCalculate.Font = new System.Drawing.Font("Microsoft YaHei UI", 12.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCalculate.Location = new System.Drawing.Point(317, 579);
             this.btnCalculate.Name = "btnCalculate";
-            this.btnCalculate.Size = new System.Drawing.Size(118, 38);
+            this.btnCalculate.Size = new System.Drawing.Size(102, 35);
             this.btnCalculate.TabIndex = 2;
             this.btnCalculate.Text = "&Calculate";
             this.btnCalculate.UseVisualStyleBackColor = true;
@@ -140,9 +148,9 @@
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnExit.Font = new System.Drawing.Font("Microsoft YaHei UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnExit.Location = new System.Drawing.Point(785, 15);
+            this.btnExit.Location = new System.Drawing.Point(773, 15);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(61, 38);
+            this.btnExit.Size = new System.Drawing.Size(79, 51);
             this.btnExit.TabIndex = 2;
             this.btnExit.Text = "&Exit";
             this.btnExit.UseVisualStyleBackColor = false;
@@ -151,10 +159,10 @@
             // btnReset
             // 
             this.btnReset.AutoSize = true;
-            this.btnReset.Font = new System.Drawing.Font("Microsoft YaHei UI", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReset.Location = new System.Drawing.Point(229, 641);
+            this.btnReset.Font = new System.Drawing.Font("Microsoft YaHei UI", 12.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReset.Location = new System.Drawing.Point(124, 579);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(113, 38);
+            this.btnReset.Size = new System.Drawing.Size(71, 35);
             this.btnReset.TabIndex = 2;
             this.btnReset.Text = "&Reset";
             this.btnReset.UseVisualStyleBackColor = true;
@@ -170,25 +178,27 @@
             this.grpForUsage.Location = new System.Drawing.Point(62, 137);
             this.grpForUsage.Margin = new System.Windows.Forms.Padding(0);
             this.grpForUsage.Name = "grpForUsage";
-            this.grpForUsage.Size = new System.Drawing.Size(724, 112);
+            this.grpForUsage.Padding = new System.Windows.Forms.Padding(0);
+            this.grpForUsage.Size = new System.Drawing.Size(425, 87);
             this.grpForUsage.TabIndex = 3;
             this.grpForUsage.TabStop = false;
             // 
             // txtUsage
             // 
-            this.txtUsage.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsage.Location = new System.Drawing.Point(509, 44);
+            this.txtUsage.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUsage.Location = new System.Drawing.Point(294, 29);
             this.txtUsage.Name = "txtUsage";
-            this.txtUsage.Size = new System.Drawing.Size(125, 35);
+            this.txtUsage.Size = new System.Drawing.Size(105, 28);
             this.txtUsage.TabIndex = 0;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft YaHei UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(81, 47);
+            this.label2.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(18, 33);
+            this.label2.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(336, 28);
+            this.label2.Size = new System.Drawing.Size(256, 21);
             this.label2.TabIndex = 0;
             this.label2.Text = "Please enter power usage (kWh)";
             // 
@@ -201,46 +211,47 @@
             this.grpForIndustrial.Controls.Add(this.label4);
             this.grpForIndustrial.Controls.Add(this.label3);
             this.grpForIndustrial.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.grpForIndustrial.Location = new System.Drawing.Point(62, 252);
+            this.grpForIndustrial.Location = new System.Drawing.Point(62, 244);
             this.grpForIndustrial.Name = "grpForIndustrial";
-            this.grpForIndustrial.Size = new System.Drawing.Size(724, 154);
+            this.grpForIndustrial.Padding = new System.Windows.Forms.Padding(0);
+            this.grpForIndustrial.Size = new System.Drawing.Size(425, 114);
             this.grpForIndustrial.TabIndex = 3;
             this.grpForIndustrial.TabStop = false;
             this.grpForIndustrial.Visible = false;
             // 
             // txtOPUsage
             // 
-            this.txtOPUsage.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtOPUsage.Location = new System.Drawing.Point(509, 86);
+            this.txtOPUsage.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtOPUsage.Location = new System.Drawing.Point(294, 56);
             this.txtOPUsage.Name = "txtOPUsage";
-            this.txtOPUsage.Size = new System.Drawing.Size(125, 35);
+            this.txtOPUsage.Size = new System.Drawing.Size(105, 28);
             this.txtOPUsage.TabIndex = 2;
             // 
             // txtPeakUsage
             // 
-            this.txtPeakUsage.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPeakUsage.Location = new System.Drawing.Point(509, 27);
+            this.txtPeakUsage.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPeakUsage.Location = new System.Drawing.Point(294, 21);
             this.txtPeakUsage.Name = "txtPeakUsage";
-            this.txtPeakUsage.Size = new System.Drawing.Size(125, 35);
+            this.txtPeakUsage.Size = new System.Drawing.Size(105, 28);
             this.txtPeakUsage.TabIndex = 1;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft YaHei UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(67, 89);
+            this.label4.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(3, 60);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(350, 28);
+            this.label4.Size = new System.Drawing.Size(271, 21);
             this.label4.TabIndex = 0;
             this.label4.Text = "Off peak hour power usage (kWh)";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft YaHei UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(104, 30);
+            this.label3.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(32, 25);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(313, 28);
+            this.label3.Size = new System.Drawing.Size(241, 21);
             this.label3.TabIndex = 0;
             this.label3.Text = "Peak hour power usage (kWh)";
             // 
@@ -248,20 +259,20 @@
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Microsoft YaHei UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(232, 586);
+            this.label5.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(171, 518);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(216, 28);
+            this.label5.Size = new System.Drawing.Size(164, 21);
             this.label5.TabIndex = 0;
             this.label5.Text = "Total Amount (CAD)";
             // 
             // txtTotal
             // 
             this.txtTotal.Enabled = false;
-            this.txtTotal.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotal.Location = new System.Drawing.Point(571, 586);
+            this.txtTotal.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotal.Location = new System.Drawing.Point(356, 514);
             this.txtTotal.Name = "txtTotal";
-            this.txtTotal.Size = new System.Drawing.Size(125, 35);
+            this.txtTotal.Size = new System.Drawing.Size(105, 28);
             this.txtTotal.TabIndex = 1;
             // 
             // grpForIndusAmt
@@ -273,9 +284,10 @@
             this.grpForIndusAmt.Controls.Add(this.label7);
             this.grpForIndusAmt.Controls.Add(this.label6);
             this.grpForIndusAmt.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.grpForIndusAmt.Location = new System.Drawing.Point(62, 412);
+            this.grpForIndusAmt.Location = new System.Drawing.Point(62, 378);
             this.grpForIndusAmt.Name = "grpForIndusAmt";
-            this.grpForIndusAmt.Size = new System.Drawing.Size(724, 159);
+            this.grpForIndusAmt.Padding = new System.Windows.Forms.Padding(0);
+            this.grpForIndusAmt.Size = new System.Drawing.Size(425, 119);
             this.grpForIndusAmt.TabIndex = 5;
             this.grpForIndusAmt.TabStop = false;
             this.grpForIndusAmt.Visible = false;
@@ -283,40 +295,119 @@
             // txtOPCharge
             // 
             this.txtOPCharge.Enabled = false;
-            this.txtOPCharge.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtOPCharge.Location = new System.Drawing.Point(507, 91);
+            this.txtOPCharge.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtOPCharge.Location = new System.Drawing.Point(294, 61);
             this.txtOPCharge.Name = "txtOPCharge";
-            this.txtOPCharge.Size = new System.Drawing.Size(125, 35);
+            this.txtOPCharge.Size = new System.Drawing.Size(105, 28);
             this.txtOPCharge.TabIndex = 1;
             // 
             // txtPeakCharge
             // 
             this.txtPeakCharge.Enabled = false;
-            this.txtPeakCharge.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPeakCharge.Location = new System.Drawing.Point(507, 32);
+            this.txtPeakCharge.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPeakCharge.Location = new System.Drawing.Point(294, 27);
             this.txtPeakCharge.Name = "txtPeakCharge";
-            this.txtPeakCharge.Size = new System.Drawing.Size(125, 35);
+            this.txtPeakCharge.Size = new System.Drawing.Size(105, 28);
             this.txtPeakCharge.TabIndex = 1;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft YaHei UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(125, 94);
+            this.label7.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(49, 65);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(290, 28);
+            this.label7.Size = new System.Drawing.Size(224, 21);
             this.label7.TabIndex = 0;
             this.label7.Text = "Off peak hour charge (CAD)";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft YaHei UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(162, 35);
+            this.label6.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(81, 31);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(253, 28);
+            this.label6.Size = new System.Drawing.Size(194, 21);
             this.label6.TabIndex = 0;
             this.label6.Text = "Peak hour charge (CAD)";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox2.Controls.Add(this.txtAcctNum);
+            this.groupBox2.Controls.Add(this.txtCustName);
+            this.groupBox2.Controls.Add(this.label9);
+            this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Controls.Add(this.btnAddCust);
+            this.groupBox2.Location = new System.Drawing.Point(519, 137);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(0);
+            this.groupBox2.Size = new System.Drawing.Size(314, 141);
+            this.groupBox2.TabIndex = 6;
+            this.groupBox2.TabStop = false;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(26, 34);
+            this.label8.Margin = new System.Windows.Forms.Padding(0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(135, 21);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Customer Name";
+            // 
+            // txtCustName
+            // 
+            this.txtCustName.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCustName.Location = new System.Drawing.Point(189, 33);
+            this.txtCustName.Margin = new System.Windows.Forms.Padding(0);
+            this.txtCustName.Name = "txtCustName";
+            this.txtCustName.Size = new System.Drawing.Size(105, 28);
+            this.txtCustName.TabIndex = 0;
+            // 
+            // txtAcctNum
+            // 
+            this.txtAcctNum.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAcctNum.Location = new System.Drawing.Point(189, 69);
+            this.txtAcctNum.Margin = new System.Windows.Forms.Padding(0);
+            this.txtAcctNum.Name = "txtAcctNum";
+            this.txtAcctNum.Size = new System.Drawing.Size(105, 28);
+            this.txtAcctNum.TabIndex = 0;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(20, 73);
+            this.label9.Margin = new System.Windows.Forms.Padding(0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(141, 21);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "Account Number";
+            // 
+            // btnAddCust
+            // 
+            this.btnAddCust.AutoSize = true;
+            this.btnAddCust.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddCust.Location = new System.Drawing.Point(216, 104);
+            this.btnAddCust.Margin = new System.Windows.Forms.Padding(0);
+            this.btnAddCust.Name = "btnAddCust";
+            this.btnAddCust.Size = new System.Drawing.Size(51, 31);
+            this.btnAddCust.TabIndex = 2;
+            this.btnAddCust.Text = "&Add";
+            this.btnAddCust.UseVisualStyleBackColor = true;
+            this.btnAddCust.Click += new System.EventHandler(this.btnAddCust_Click);
+            // 
+            // lstCustomer
+            // 
+            this.lstCustomer.BackColor = System.Drawing.Color.BlanchedAlmond;
+            this.lstCustomer.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lstCustomer.FormattingEnabled = true;
+            this.lstCustomer.ItemHeight = 21;
+            this.lstCustomer.Location = new System.Drawing.Point(519, 284);
+            this.lstCustomer.Name = "lstCustomer";
+            this.lstCustomer.Size = new System.Drawing.Size(314, 340);
+            this.lstCustomer.TabIndex = 7;
             // 
             // frmCalculator
             // 
@@ -326,7 +417,9 @@
             this.AutoSize = true;
             this.BackgroundImage = global::PowerBillCalculator.Properties.Resources.yellow_lightening;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(856, 691);
+            this.ClientSize = new System.Drawing.Size(862, 691);
+            this.Controls.Add(this.lstCustomer);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.grpForIndusAmt);
             this.Controls.Add(this.txtTotal);
             this.Controls.Add(this.grpForIndustrial);
@@ -339,7 +432,7 @@
             this.Controls.Add(this.label1);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Microsoft YaHei UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.Name = "frmCalculator";
             this.Text = "Power Bill Calculator";
             this.Load += new System.EventHandler(this.frmCalculator_Load);
@@ -351,6 +444,8 @@
             this.grpForIndustrial.PerformLayout();
             this.grpForIndusAmt.ResumeLayout(false);
             this.grpForIndusAmt.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -381,6 +476,13 @@
         private System.Windows.Forms.TextBox txtPeakCharge;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.TextBox txtCustName;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtAcctNum;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button btnAddCust;
+        private System.Windows.Forms.ListBox lstCustomer;
     }
 }
 

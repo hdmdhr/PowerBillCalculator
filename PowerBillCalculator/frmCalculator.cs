@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 using CustomerData;
-using CustomerClasses;
 using System.IO;
 
 namespace PowerBillCalculator
@@ -139,18 +138,22 @@ namespace PowerBillCalculator
             btnReset_Click(sender, e);
         }
 
-        // form loaded: focus on usage textbox
+        // form loaded: focus on usage textbox, load customer list and display
         private void frmCalculator_Load(object sender, EventArgs e)
         {
             ActiveControl = txtUsage;  // focus on a textbox when form loaded
+
+            // todo: 
+            customers = CustomerDB.LoadCustomers();
+            DisplayCustomerList(customers);
         }
 
         // add button clicked: add new customer to list, write list to file
         private void btnAddCust_Click(object sender, EventArgs e)
         {
             // validate txtAcctNum, txtCustName, txtTotal
-            if (Validator.TBHasNonNegativeInt(txtAcctNum, "Account Number") &&
-                !Validator.TBIsEmpty(txtCustName, "Customer Name") &&
+            if (!Validator.TBIsEmpty(txtCustName, "Customer Name") &&
+                Validator.TBHasNonNegativeInt(txtAcctNum, "Account Number") &&
                 !Validator.TBIsEmpty(txtTotal, "Total Amount"))
             {
                 int acctNum = Convert.ToInt32(txtAcctNum.Text);
@@ -167,37 +170,52 @@ namespace PowerBillCalculator
                             custType = Convert.ToChar(radio.Tag.ToString());
                     }
                 }
+
+                var newCustomer = new Customer(acctNum, custName, custType, totalAmt);
+                customers.Add(newCustomer);
                 // all property value ready, create customer object based on custType, add to list
-                switch (custType)
-                {
-                    case 'R':
-                        var newResidential = new ResidentialCustomer(acctNum, custName, custType, totalAmt);
-                        customers.Add(newResidential);
-                        break;
-                    case 'C':
-                        var newCommercial = new CommercialCustomer(acctNum, custName, custType, totalAmt);
-                        customers.Add(newCommercial);
-                        break;
-                    case 'I':
-                        var newIndustrial = new IndustrialCustomer(acctNum, custName, custType, totalAmt);
-                        customers.Add(newIndustrial);
-                        break;
-                    default:
-                        break;
-                }
+                //switch (custType)
+                //{
+                //    case 'R':
+                //        var newResidential = new ResidentialCustomer(acctNum, custName, custType, totalAmt);
+                //        customers.Add(newResidential);
+                //        break;
+                //    case 'C':
+                //        var newCommercial = new CommercialCustomer(acctNum, custName, custType, totalAmt);
+                //        customers.Add(newCommercial);
+                //        break;
+                //    case 'I':
+                //        var newIndustrial = new IndustrialCustomer(acctNum, custName, custType, totalAmt);
+                //        customers.Add(newIndustrial);
+                //        break;
+                //    default:
+                //        break;
+                //}
 
-                // todo: save list to a .txt file, look at google drive
-                string relativePath = "Customers.txt";
-                var fs = new FileStream(relativePath, FileMode.Append, FileAccess.Write);
-                var sw = new StreamWriter(fs);
+                // todo: save list to a .txt file, display list
+                CustomerDB.SaveCustomers(customers);
+                DisplayCustomerList(customers);
 
-                foreach (var c in customers)
-                {
-
-                }
 
             }
 
-        }// button clicked
+        }
+
+        //------------- form-level methods ---------------//
+
+        // display a customer list in listbox
+        private void DisplayCustomerList(List<Customer> list)
+        {
+            lstCustomer.Items.Clear();
+            double sum = 0;
+            foreach (var c in list)
+            {
+                lstCustomer.Items.Add(c);
+                sum += c.ChargeAmount;
+            }
+
+            txtTotalCharges.Text = sum.ToString("c");
+            txtCustNumber.Text = list.Count().ToString();
+        }
     }
 }

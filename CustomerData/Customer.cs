@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CustomerClasses
+namespace CustomerData
 {
-    public abstract class Customer
+    public class Customer
     {
         // private properties
         private int accountNo;
@@ -44,18 +44,33 @@ namespace CustomerClasses
         }
 
         // methods
-        public override string ToString()
+        public string ToCSV()
         {
             string str = "";
-            str += accountNo.ToString() + ", ";
-            str += CustomerName + ", ";
-            str += customerType.ToString() + ", ";
-            str += chargeAmount.ToString();
+            str += accountNo.ToString() + ",";
+            str += CustomerName + ",";
+            str += customerType.ToString() + ",";
+            str += chargeAmount.ToString("f2");
 
             return str;
         }
-        // abstract method for further overriding, second parameter opUse is only used for calculating industrial user
-        public abstract double CalculateCharge(int usage, int opUse = 0);
+
+        public override string ToString()
+        {
+            string str = "";
+            str += accountNo.ToString() + "--";
+            str += CustomerName + " (";
+            str += customerType.ToString() + "): ";
+            str += chargeAmount.ToString("c");
+
+            return str;
+        }
+
+        // dummy method for further overriding, second parameter opUse is only used for calculating industrial user
+        public virtual double CalculateCharge(int usage, int opUse = 0)
+        {
+            return 0;
+        }
 
     }
 }

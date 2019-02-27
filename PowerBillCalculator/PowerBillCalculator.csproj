@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomerDB.cs" />
     <Compile Include="Validator.cs" />
     <Compile Include="frmCalculator.cs">
       <SubType>Form</SubType>
@@ -86,6 +87,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\yellow lightening.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CustomerData\CustomerData.csproj">
+      <Project>{ED8B01EF-8401-4D03-A7C2-88BFF573269F}</Project>
+      <Name>CustomerData</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

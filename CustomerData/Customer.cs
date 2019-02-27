@@ -49,8 +49,8 @@ namespace CustomerClasses
             string str = "";
             str += accountNo.ToString() + ", ";
             str += CustomerName + ", ";
-            str += customerType + ", ";
-            str += chargeAmount + ", ";
+            str += customerType.ToString() + ", ";
+            str += chargeAmount.ToString();
 
             return str;
         }

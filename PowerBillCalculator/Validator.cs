@@ -40,7 +40,7 @@ namespace PowerBillCalculator
         //--------------------- Breakdown Methods ---------------------------//
 
         // check if a textbox is empty, if yes, show messagebox
-        private static bool TBIsEmpty(TextBox tb, string txtBoxName)
+        public static bool TBIsEmpty(TextBox tb, string txtBoxName)
         {
             if (tb.Text == "")
             {
@@ -53,7 +53,7 @@ namespace PowerBillCalculator
         }
 
         // check if a textbox has integer value, if no, show messagebox
-        private static bool TBHasInt(TextBox tb, string txtBoxName)
+        public static bool TBHasInt(TextBox tb, string txtBoxName)
         {
             if (!Int32.TryParse(tb.Text, out int myInt))
             {
@@ -67,9 +67,9 @@ namespace PowerBillCalculator
         }
 
         // check if a textbox has negative value, if yes, show messagebox
-        private static bool TBHasNegativeValue(TextBox tb, string txtBoxName)
+        public static bool TBHasNegativeValue(TextBox tb, string txtBoxName)
         {
-            if (Convert.ToInt32(tb.Text) < 0)
+            if (Convert.ToDouble(tb.Text) < 0)
             {
                 MessageBox.Show(txtBoxName + " requires a non-negative value.", "Input Error");
                 tb.SelectAll();  // highlight text for easy replacement

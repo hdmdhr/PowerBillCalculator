@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
+using CustomerData;
+using CustomerClasses;
+using System.IO;
 
 namespace PowerBillCalculator
 {
@@ -21,21 +24,8 @@ namespace PowerBillCalculator
     {
         // -------------- Form-Level Declaration Area -------------------------//
 
-        private const double RATE_RESIDENTIAL = 0.052;  // rate for residentital user
-        private const double RATE_COMMERCIAL = 0.045;  // rate for commercial user
-        private const double PH_INDUSTRIAL = 0.065;  // peak hour rate for industrial user
-        private const double OP_INDUSTRIAL = 0.028; // off peak rate for industrial user
-
-        private const double BASE_RESIDENTIAL = 6.00;  // basic charge for residential user
-        private const double BASE_COMMERCIAL = 60.00;  // basic charge for commercial user
-        private const double PH_BASE_INDUSTRIAL = 76.00;  // basic charge for industrial peak hour use
-        private const double OP_BASE_INDUSTRIAL = 40.00;  // basic charge for industrial off peak use
-
-        private const double BASE_USAGE_KWH = 1000;  // usage amount that basic charge covers
-
-        private double totalAmt = 0;  // variable to save the total charge for a user
-
-        //------------------------ END -------------------------------------//
+        List<Customer> customers = new List<Customer>();
+        private double totalAmt = 0;  // to save total charge for a user
 
         public frmCalculator()
         {
@@ -54,16 +44,13 @@ namespace PowerBillCalculator
             // iterate through all text boxes, clear all contents
             foreach (Control c in Controls)
             {
+                if (c is TextBox)
+                    ((TextBox)c).Clear();
+                // for text boxes inside group box
                 foreach (Control childc in c.Controls)
                 {
                     if (childc is TextBox)
-                    {
                         ((TextBox)childc).Clear();
-                    }
-                }
-                if (c is TextBox)
-                {
-                    ((TextBox)c).Clear();
                 }
             }
         }
@@ -76,14 +63,20 @@ namespace PowerBillCalculator
             {
                 if (Validator.TBHasNonNegativeInt(txtUsage, "Usage"))
                 {
-                    double usage = Convert.ToDouble(txtUsage.Text);
+                    int usage = Convert.ToInt32(txtUsage.Text);
                     // if residential user, do calculation use residential method
                     if (radResidential.Checked)
-                        totalAmt = CalculateResidential(usage);
+                    {
+                        var resCust = new ResidentialCustomer();  // create a dummy customer in order to use CalculateCharge method
+                        totalAmt = resCust.CalculateCharge(usage);
+                    }
 
                     // if commercial user, do calculation use commercial method
                     else if (radCommercial.Checked)
-                        totalAmt = CalculateCommercial(usage);
+                    {
+                        var comCust = new CommercialCustomer();
+                        totalAmt = comCust.CalculateCharge(usage);
+                    }
 
                     txtTotal.Text = totalAmt.ToString("c");
                     txtUsage.SelectAll();  // select all text in usage textbox for entering next user
@@ -94,15 +87,16 @@ namespace PowerBillCalculator
             {
                 if (Validator.TBHasNonNegativeInt(txtPeakUsage, "Peak Hour Usage") && Validator.TBHasNonNegativeInt(txtOPUsage, "Off Peak Usage"))
                 {
-                    double peakUsage = Convert.ToDouble(txtPeakUsage.Text);
-                    double opUsage = Convert.ToDouble(txtOPUsage.Text);
+                    int peakUsage = Convert.ToInt32(txtPeakUsage.Text);
+                    int opUsage = Convert.ToInt32(txtOPUsage.Text);
 
-                    totalAmt = CalculateIndustrial(peakUsage, opUsage, out double peakAmt, out double opAmt);  // use industrial method
+                    var indCust = new IndustrialCustomer();
+                    totalAmt = indCust.CalculateCharge(peakUsage, opUsage);  // use industrial method
 
                     // output peak & op & total amount separately
                     grpForIndusAmt.Visible = true;
-                    txtPeakCharge.Text = peakAmt.ToString("c");
-                    txtOPCharge.Text = opAmt.ToString("c");
+                    txtPeakCharge.Text = indCust.peakAmt.ToString("c");
+                    txtOPCharge.Text = indCust.opAmt.ToString("c");
                     txtTotal.Text = totalAmt.ToString("c");
 
                     // select all text in peak hour usage textbox for entering next user
@@ -111,43 +105,6 @@ namespace PowerBillCalculator
                 }
             }
         }
-
-        //-------------- Calculation Methods Area --------------------//
-
-        //  method for residential user
-        private double CalculateResidential(double usage)
-        {
-            return BASE_RESIDENTIAL + usage * RATE_RESIDENTIAL;
-        }
-
-        //  method for commercial user
-        private double CalculateCommercial(double usage)
-        {
-            if (usage <= BASE_USAGE_KWH)
-                totalAmt = BASE_COMMERCIAL;
-            else
-                totalAmt = BASE_COMMERCIAL + (usage - BASE_USAGE_KWH) * RATE_COMMERCIAL;
-
-            return totalAmt;
-        }
-
-        // method for industrial user
-        private double CalculateIndustrial(double peakUse, double opUse, out double peakAmt, out double opAmt)
-        {
-            if (peakUse <= BASE_USAGE_KWH)
-                peakAmt = PH_BASE_INDUSTRIAL;
-            else
-                peakAmt = PH_BASE_INDUSTRIAL + (peakUse - BASE_USAGE_KWH) * PH_INDUSTRIAL;
-
-            if (opUse <= BASE_USAGE_KWH)
-                opAmt = OP_BASE_INDUSTRIAL;
-            else
-                opAmt = OP_BASE_INDUSTRIAL + (opUse - BASE_USAGE_KWH) * OP_INDUSTRIAL;
-
-            return peakAmt + opAmt;
-        }
-
-        //------------------------ END -------------------------//
 
         //  industrial radio button checked or unchecked: hide and show corresponding groupbox
         private void radIndustrial_CheckedChanged(object sender, EventArgs e)
@@ -191,7 +148,56 @@ namespace PowerBillCalculator
         // add button clicked: add new customer to list, write list to file
         private void btnAddCust_Click(object sender, EventArgs e)
         {
+            // validate txtAcctNum, txtCustName, txtTotal
+            if (Validator.TBHasNonNegativeInt(txtAcctNum, "Account Number") &&
+                !Validator.TBIsEmpty(txtCustName, "Customer Name") &&
+                !Validator.TBIsEmpty(txtTotal, "Total Amount"))
+            {
+                int acctNum = Convert.ToInt32(txtAcctNum.Text);
+                string custName = txtCustName.Text;
+                // totalAmt is saved on form-level
+                char custType = 'R';
+                // check with radio button is checked, cast it's tag as customer type
+                foreach (Control c in Controls)
+                {
+                    if (c is RadioButton)
+                    {
+                        var radio = (RadioButton)c;
+                        if (radio.Checked)
+                            custType = Convert.ToChar(radio.Tag.ToString());
+                    }
+                }
+                // all property value ready, create customer object based on custType, add to list
+                switch (custType)
+                {
+                    case 'R':
+                        var newResidential = new ResidentialCustomer(acctNum, custName, custType, totalAmt);
+                        customers.Add(newResidential);
+                        break;
+                    case 'C':
+                        var newCommercial = new CommercialCustomer(acctNum, custName, custType, totalAmt);
+                        customers.Add(newCommercial);
+                        break;
+                    case 'I':
+                        var newIndustrial = new IndustrialCustomer(acctNum, custName, custType, totalAmt);
+                        customers.Add(newIndustrial);
+                        break;
+                    default:
+                        break;
+                }
 
-        }
+                // todo: save list to a .txt file, look at google drive
+                string relativePath = "Customers.txt";
+                var fs = new FileStream(relativePath, FileMode.Append, FileAccess.Write);
+                var sw = new StreamWriter(fs);
+
+                foreach (var c in customers)
+                {
+
+                }
+
+            }
+
+        }// button clicked
     }
 }

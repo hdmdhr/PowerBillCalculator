@@ -19,7 +19,7 @@ namespace CustomerData
         private const double OP_BASE_INDUSTRIAL = 40.00;  // basic charge for industrial off peak use
         private const double BASE_USAGE_KWH = 1000;  // usage amount that basic charge covers
 
-        public double peakAmt, opAmt;  // for outputing amount separately
+        public double peakAmt = 0, opAmt = 0;  // for outputing amount separately
 
         // constructor
         public IndustrialCustomer(int acctNo = 0, string cName = "", char cType = 'I', double chargeAmt = 0) : base(acctNo, cName, cType, chargeAmt)

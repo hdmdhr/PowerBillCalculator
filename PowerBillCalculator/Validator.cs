@@ -10,7 +10,7 @@ namespace PowerBillCalculator
     /*
      * Author: DongMing Hu
      * Date: Feb. 22, 2019
-     * Purpose: A class contains validation method to test if a textbox has a non-negative integer.
+     * Purpose: A class contains various validation methods to test a textbox.
      * 
      */
 

@@ -20,8 +20,7 @@ namespace CustomerData.Tests
             double expectedCharge = 6;
             double actualCharge;
             // Act
-            var dummyResidential = new ResidentialCustomer();
-            actualCharge = dummyResidential.CalculateCharge(usage);
+            actualCharge = ResidentialCustomer.CalculateCharge(usage);
             // Assert
             Assert.AreEqual(expectedCharge, actualCharge);
         }
@@ -35,8 +34,7 @@ namespace CustomerData.Tests
             double expectedCharge = 58;
             double actualCharge;
             // Act
-            var dummyCustomer = new ResidentialCustomer();
-            actualCharge = dummyCustomer.CalculateCharge(usage);
+            actualCharge = ResidentialCustomer.CalculateCharge(usage);
             // Assert
             Assert.AreEqual(expectedCharge, actualCharge);
         }
@@ -50,8 +48,7 @@ namespace CustomerData.Tests
             double expectedCharge = 6;
             double actualCharge;
             // Act
-            var dummyCustomer = new ResidentialCustomer();
-            actualCharge = dummyCustomer.CalculateCharge(usage);
+            actualCharge = ResidentialCustomer.CalculateCharge(usage);
             // Assert
             Assert.AreEqual(expectedCharge, actualCharge);
         }

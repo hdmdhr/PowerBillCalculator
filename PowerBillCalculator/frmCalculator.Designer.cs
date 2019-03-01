@@ -452,7 +452,6 @@
             this.lstCustomer.FormattingEnabled = true;
             this.lstCustomer.ItemHeight = 19;
             this.lstCustomer.Location = new System.Drawing.Point(519, 263);
-            this.lstCustomer.MultiColumn = true;
             this.lstCustomer.Name = "lstCustomer";
             this.lstCustomer.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lstCustomer.Size = new System.Drawing.Size(314, 308);

@@ -191,11 +191,16 @@ namespace PowerBillCalculator
             // if listbox has a selected item, remove it from customers list
             if (lstCustomer.SelectedItem != null)
             {
-                customers.Remove((Customer)lstCustomer.SelectedItem);
-
+                var index = lstCustomer.SelectedIndex;
+                customers.RemoveAt(index);
                 // write updated list to .txt and display
                 CustomerDB.SaveCustomers(customers);
                 DisplayCustomerList(customers);
+                // select previous customer in the listbox after deletion
+                if (lstCustomer.Items.Count >= 1)
+                    lstCustomer.SelectedIndex = (index - 1) < 0 ? 0 : index - 1;
+                else
+                    lstCustomer.SelectedItem = null;
             }
             else  // if nothing selected, show message to user
                 MessageBox.Show("No customer is selected.", "No Selection");

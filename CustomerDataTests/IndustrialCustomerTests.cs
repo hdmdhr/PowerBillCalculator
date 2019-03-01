@@ -20,8 +20,7 @@ namespace CustomerData.Tests
             double expectedCharge = 116;
             double actualCharge;
             // Act
-            var dummyIndustrial = new IndustrialCustomer();
-            actualCharge = dummyIndustrial.CalculateCharge(phUsage, opUsage);
+            actualCharge = IndustrialCustomer.CalculateCharge(phUsage, opUsage);
             // Assert
             Assert.AreEqual(expectedCharge, actualCharge);
         }
@@ -35,8 +34,7 @@ namespace CustomerData.Tests
             double expectedCharge = 181;
             double actualCharge;
             // Act
-            var dummyIndustrial = new IndustrialCustomer();
-            actualCharge = dummyIndustrial.CalculateCharge(phUsage, opUsage);
+            actualCharge = IndustrialCustomer.CalculateCharge(phUsage, opUsage);
             // Assert
             Assert.AreEqual(expectedCharge, actualCharge);
         }
@@ -50,8 +48,7 @@ namespace CustomerData.Tests
             double expectedCharge = 144;
             double actualCharge;
             // Act
-            var dummyIndustrial = new IndustrialCustomer();
-            actualCharge = dummyIndustrial.CalculateCharge(phUsage, opUsage);
+            actualCharge = IndustrialCustomer.CalculateCharge(phUsage, opUsage);
             // Assert
             Assert.AreEqual(expectedCharge, actualCharge);
         }
@@ -65,8 +62,7 @@ namespace CustomerData.Tests
             double expectedCharge = 209;
             double actualCharge;
             // Act
-            var dummyIndustrial = new IndustrialCustomer();
-            actualCharge = dummyIndustrial.CalculateCharge(phUsage, opUsage);
+            actualCharge = IndustrialCustomer.CalculateCharge(phUsage, opUsage);
             // Assert
             Assert.AreEqual(expectedCharge, actualCharge);
         }
@@ -80,8 +76,7 @@ namespace CustomerData.Tests
             double expectedCharge = 116;
             double actualCharge;
             // Act
-            var dummyIndustrial = new IndustrialCustomer();
-            actualCharge = dummyIndustrial.CalculateCharge(phUsage, opUsage);
+            actualCharge = IndustrialCustomer.CalculateCharge(phUsage, opUsage);
             // Assert
             Assert.AreEqual(expectedCharge, actualCharge);
         }

@@ -1,0 +1,2 @@
+1,Daniel H.,R,162.00
+3,Apple Inc.,I,302.00

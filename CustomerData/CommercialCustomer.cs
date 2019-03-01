@@ -26,7 +26,7 @@ namespace CustomerData
         }
 
         // methods
-        public override double CalculateCharge(int usage, int opUse = 0)
+        public static double CalculateCharge(int usage, int opUse = 0)
         {
             if (usage < 0)
                 usage = 0;

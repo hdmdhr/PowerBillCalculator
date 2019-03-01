@@ -19,7 +19,7 @@ namespace CustomerData
         public ResidentialCustomer(int acctNo=0, string cName="", char cType = 'R', double chargeAmt = 0) : base(acctNo, cName, cType, chargeAmt) { }
 
         // methods
-        public override double CalculateCharge(int usage, int opUse = 0)
+        public static double CalculateCharge(int usage, int opUse = 0)
         {
             if (usage < 0)
                 usage = 0;

@@ -67,10 +67,10 @@ namespace CustomerData
         }
 
         // dummy method for further overriding, second parameter opUse is only used for calculating industrial user
-        public virtual double CalculateCharge(int usage, int opUse = 0)
-        {
-            return 0;
-        }
+        //public virtual double CalculateCharge(int usage, int opUse = 0)
+        //{
+        //    return 0;
+        //}
 
     }
 }

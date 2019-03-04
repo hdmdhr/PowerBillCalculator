@@ -273,5 +273,21 @@ namespace PowerBillCalculator
             }
         }
 
+        // -----------------------------------------------------
+
+        private void lstCustomer_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (lstCustomer.SelectedItem != null)
+            {
+                grpUpdate.Visible = true;
+                grpNewCust.Visible = false;
+            }
+            else
+            {
+                grpUpdate.Visible = false;
+                grpNewCust.Visible = true;
+            }
+
+        }
     }
 }

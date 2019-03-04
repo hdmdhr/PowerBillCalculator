@@ -8,6 +8,13 @@ using System.Threading.Tasks;
 
 namespace CustomerData.Tests
 {
+    /*
+     * Author: DongMing Hu
+     * Date: Feb. 27, 2019
+     * Purpose: Test calculation method for residential customers.
+     * 
+     */
+
     [TestClass()]
     public class ResidentialCustomerTests
     {

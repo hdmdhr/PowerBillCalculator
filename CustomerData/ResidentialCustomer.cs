@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 
 namespace CustomerData
 {
-    /// <summary>
-    /// Residential Customer class
-    /// </summary>
+    /*
+     * Author: DongMing Hu
+     * Date: Feb. 27, 2019
+     * Purpose: Model layer of MVC pattern. A class for residential customers.
+     * 
+     */
     public class ResidentialCustomer : Customer
     {
         // private properties
@@ -18,8 +21,8 @@ namespace CustomerData
         // constructor
         public ResidentialCustomer(int acctNo=0, string cName="", char cType = 'R', double chargeAmt = 0) : base(acctNo, cName, cType, chargeAmt) { }
 
-        // methods
-        public static double CalculateCharge(int usage, int opUse = 0)
+        // method
+        public static double CalculateCharge(int usage)
         {
             if (usage < 0)
                 usage = 0;

@@ -10,7 +10,7 @@ namespace PowerBillCalculator
     /*
      * Author: DongMing Hu
      * Date: Feb. 22, 2019
-     * Purpose: A class contains various validation methods to test a textbox.
+     * Purpose: A class contains various validation methods to validate a textbox.
      * 
      */
 
@@ -44,7 +44,7 @@ namespace PowerBillCalculator
         {
             if (tb.Text == "")
             {
-                MessageBox.Show(txtBoxName + " need to be filled.", "Input Error");
+                MessageBox.Show(txtBoxName + " need to be provided.", "Input Error");
                 tb.Focus();
                 return true;
             }

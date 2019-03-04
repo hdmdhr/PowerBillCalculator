@@ -8,6 +8,13 @@ using System.Threading.Tasks;
 
 namespace CustomerData.Tests
 {
+    /*
+     * Author: DongMing Hu
+     * Date: Feb. 27, 2019
+     * Purpose: Test calculation method for commercial customers.
+     * 
+     */
+
     [TestClass()]
     public class CommercialCustomerTests
     {
@@ -39,7 +46,7 @@ namespace CustomerData.Tests
             Assert.AreEqual(expectedCharge, actualCharge);
         }
 
-        // Test 3: positive, above base usage amount
+        // Test 3: positive, above base usage amount (1000 kwh)
         [TestMethod()]
         public void CalculateChargeAboveBaseTest()
         {
@@ -54,5 +61,5 @@ namespace CustomerData.Tests
         }
 
 
-    }  // class
-}  // namespace
+    }
+}

@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 
 namespace CustomerData
 {
-    /// <summary>
-    /// Industrial Customer Class
-    /// </summary>
+    /*
+     * Author: DongMing Hu
+     * Date: Feb. 27, 2019
+     * Purpose: Model layer of MVC pattern. A class for industrial customers.
+     * 
+     */
     public class IndustrialCustomer : Customer
     {
         // private properties
@@ -25,7 +28,7 @@ namespace CustomerData
         {
         }
 
-        // methods
+        // method
         public static double CalculateCharge(int peakUse, int opUse = 0)
         {
             if (peakUse < 0) peakUse = 0;

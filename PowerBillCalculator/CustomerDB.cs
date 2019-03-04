@@ -8,6 +8,13 @@ using System.Threading.Tasks;
 
 namespace PowerBillCalculator
 {
+    /*
+     * Author: DongMing Hu
+     * Date: Feb. 26, 2019
+     * Purpose: Controller layer of MVC pattern. Include two static methods, one for reading data from file, one for saving data into file. Constant "path" is the relative location of the .txt file.
+     * 
+     */
+
     static class CustomerDB
     {
         const string path = "../../Customers.txt";

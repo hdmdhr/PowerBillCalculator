@@ -16,7 +16,7 @@ namespace PowerBillCalculator
     /*
      * Author: DongMing Hu
      * Date: Feb. 20, 2019
-     * Purpose: Calculate power bill for 3 types of users
+     * Purpose: Controller layer of MVC pattern. Talks to Model layer to do calculation and creates objects, decided what and when to be shown to user on View layer.
      * 
      */
     public partial class frmCalculator : Form
@@ -38,25 +38,12 @@ namespace PowerBillCalculator
             Close();
         }
 
-        // Reset Button Clicked: erase all text boxes
+        // Reset Button Clicked: clear all text boxes has tag "clearable", check first radioBtn
         private void btnReset_Click(object sender, EventArgs e)
         {
-            // iterate through all text boxes with tag "clearable", clear contents
-            foreach (Control c in Controls)
-            {
-                if (c is TextBox && 
-                    c.Tag != null && 
-                    c.Tag.ToString() == "clearable")
-                    ((TextBox)c).Clear();
-                // for text boxes inside a group box
-                foreach (Control childc in c.Controls)
-                {
-                    if (childc is TextBox && 
-                        childc.Tag != null && 
-                        childc.Tag.ToString() == "clearable")
-                        ((TextBox)childc).Clear();
-                }
-            }
+            ClearCalculationField();
+            // check the residential radio button
+            radResidential.Checked = true;
         }
 
         // Calculate Button Clicked: do validation, do calculation based on user type, show result(s)
@@ -68,21 +55,16 @@ namespace PowerBillCalculator
                 if (Validator.TBHasNonNegativeInt(txtUsage, "Usage"))
                 {
                     int usage = Convert.ToInt32(txtUsage.Text);
+
                     // if residential user, do calculation use residential method
                     if (radResidential.Checked)
-                    {
-                        // use CalculateCharge method
                         totalAmt = ResidentialCustomer.CalculateCharge(usage);
-                    }
-
                     // if commercial user, do calculation use commercial method
                     else if (radCommercial.Checked)
-                    {
                         totalAmt = CommercialCustomer.CalculateCharge(usage);
-                    }
 
                     txtTotal.Text = totalAmt.ToString("c");
-                    txtUsage.SelectAll();  // select all text in usage textbox for entering next user
+                    txtUsage.SelectAll();  // select all text in usage textbox for next entering
                 }
             }
             // if industrial user, after validation, extract inputs, do calculation, show results
@@ -93,7 +75,7 @@ namespace PowerBillCalculator
                     int peakUsage = Convert.ToInt32(txtPeakUsage.Text);
                     int opUsage = Convert.ToInt32(txtOPUsage.Text);
 
-                    totalAmt = IndustrialCustomer.CalculateCharge(peakUsage, opUsage);  // use industrial method
+                    totalAmt = IndustrialCustomer.CalculateCharge(peakUsage, opUsage);  // calculate amount use industrial method
 
                     // output peak & op & total amount separately
                     grpForIndusAmt.Visible = true;
@@ -101,14 +83,14 @@ namespace PowerBillCalculator
                     txtOPCharge.Text = IndustrialCustomer.opAmt.ToString("c");
                     txtTotal.Text = totalAmt.ToString("c");
 
-                    // select all text in peak hour usage textbox for entering next user
+                    // select all text in peak hour usage textbox for next entering
                     txtPeakUsage.Focus();
                     txtPeakUsage.SelectAll();
                 }
             }
         }
 
-        //  Industrial Radio Button Checked (unchecked): hide and show corresponding groupbox
+        //  Industrial Radio Button Checked (unchecked): show corresponding groupbox, change custType
         private void radIndustrial_CheckedChanged(object sender, EventArgs e)
         {
             RadioButton radio = (RadioButton)sender;
@@ -129,20 +111,30 @@ namespace PowerBillCalculator
             }
         }
 
-        //  Commercial Radio Button Checked (unchecked): focus usage textbox, reset all textboxes
+        //  Commercial Radio Button Checked: focus usage textbox, reset textboxes, change custType
         private void radCommercial_CheckedChanged(object sender, EventArgs e)
         {
-            txtUsage.Focus();
-            btnReset_Click(sender, e);
-            selectedCustType = 'C';
+            RadioButton radio = (RadioButton)sender;
+            if (radio.Checked)
+            {
+                txtUsage.Focus();
+                ClearCalculationField();
+                // when commercial radio checked, change custType to 'C'
+                selectedCustType = Convert.ToChar(radio.Tag.ToString());
+            }
         }
 
-        //  Residential Radio Button Checked (unchecked): focus usage textbox, reset all textboxes
+        //  Residential Radio Button Checked: focus usage textbox, reset textboxes, change custType
         private void radResidential_CheckedChanged(object sender, EventArgs e)
         {
-            txtUsage.Focus();
-            btnReset_Click(sender, e);
-            selectedCustType = 'R';
+            RadioButton radio = (RadioButton)sender;
+            if (radio.Checked)
+            {
+                txtUsage.Focus();
+                ClearCalculationField();
+                // when residential radio checked, change custType to 'R'
+                selectedCustType = Convert.ToChar(radio.Tag.ToString());
+            }
         }
 
         // Form Loaded: focus on usage textbox, load customer list and display
@@ -155,7 +147,7 @@ namespace PowerBillCalculator
             DisplayCustomerList(customers);
         }
 
-        // Add Button Clicked: create a new customer obj, add to list, write list to .txt file
+        // Add Button Clicked: create a new customer obj, add to list and display, write list to .txt file
         private void btnAddCust_Click(object sender, EventArgs e)
         {
             // validate txtAcctNum, txtCustName, txtTotal
@@ -163,7 +155,7 @@ namespace PowerBillCalculator
                 Validator.TBHasNonNegativeInt(txtAcctNum, "Account Number") &&
                 !Validator.TBIsEmpty(txtTotal, "Total Amount"))
             {
-                // if pass validation, prepare (4)values to construct new customer
+                // if pass validation, prepare (4)values to construct new customer obj
                 int acctNum = Convert.ToInt32(txtAcctNum.Text);
                 string custName = txtCustName.Text;
                 // custType and totalAmt is saved on form-level
@@ -176,45 +168,59 @@ namespace PowerBillCalculator
                 CustomerDB.SaveCustomers(customers);
                 DisplayCustomerList(customers);
 
-                // clear customer inputs, prepare for next entry
+                // clear customer inputs, calculation fields, to be ready for next entry
                 txtAcctNum.Clear();
                 txtCustName.Clear();
                 txtCustName.Focus();
-
+                ClearCalculationField();
             }
 
         }
 
-        // Delete Button Clicked: delete obj from list, save to .txt, display
+        // Delete Button Clicked: confirm, if yes, delete obj from list, display, save to .txt
         private void btnDelete_Click(object sender, EventArgs e)
-        {
-            // if listbox has a selected item, remove it from customers list
+        {            
             if (lstCustomer.SelectedItem != null)
             {
-                var index = lstCustomer.SelectedIndex;
-                customers.RemoveAt(index);
-                // write updated list to .txt and display
-                CustomerDB.SaveCustomers(customers);
-                DisplayCustomerList(customers);
-                // select previous customer in the listbox after deletion
-                if (lstCustomer.Items.Count >= 1)
-                    lstCustomer.SelectedIndex = (index - 1) < 0 ? 0 : index - 1;
-                else
-                    lstCustomer.SelectedItem = null;
+                // if listbox has a selected item, confirm with user
+                var result = MessageBox.Show("Do you really want to delete the selected customer information?", "Are You Sure", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    // if yes, remove obj from customers list and display
+                    var index = lstCustomer.SelectedIndex;
+                    customers.RemoveAt(index);
+                    DisplayCustomerList(customers);
+                    // write updated list to .txt
+                    CustomerDB.SaveCustomers(customers);
+                    // select previous customer (if there's one) in the listbox after deletion
+                    var newIndex = index - 1;
+                    if (lstCustomer.Items.Count >= 1)
+                        lstCustomer.SelectedIndex = newIndex < 0 ? 0 : newIndex;
+                    else
+                        lstCustomer.SelectedItem = null;
+                }
+
+
             }
-            else  // if nothing selected, show message to user
+            else  // if nothing selected, show error message to user
                 MessageBox.Show("No customer is selected.", "No Selection");
+            
         }
 
+        // Somewhere in Form Clicked: deselect user in customer listbox
+        private void frmCalculator_Click(object sender, EventArgs e)
+        {
+            lstCustomer.SelectedItem = null;
+        }
 
         //---------- Form-Level Methods -----------//
 
         // display customer list in listbox, output statistics
         private void DisplayCustomerList(List<Customer> list)
         {
-            // display customers in listbox, calculate separate people and charges
+            // add customers into listbox, calculate individual people and charges for each type
             lstCustomer.Items.Clear();
-            double sum1 = 0, sum2 = 0, sum3 = 0;
+            double sum1 = 0, sum2 = 0, sum3 = 0;  // 1: residential, 2: commercial, 3: industrial
             int count1 = 0, count2 = 0, count3 = 0;
             foreach (var c in list)
             {
@@ -237,8 +243,8 @@ namespace PowerBillCalculator
                     count3++;
                 }
             }
-
             // output statistics
+            // ternary opearator: if customer number or total amount is 0, show nothing in output textbox
             txtResiCount.Text = (count1 == 0) ? "" : count1.ToString();
             txtResiTotal.Text = (sum1 == 0) ? "" : sum1.ToString("c");
             txtCommCount.Text = (count2 == 0) ? "" : count2.ToString();
@@ -247,7 +253,25 @@ namespace PowerBillCalculator
             txtIndusTotal.Text = (sum3 == 0) ? "" : sum3.ToString("c");
             txtCustNumber.Text = list.Count().ToString();
             txtTotalCharges.Text = (sum1 + sum2 + sum3).ToString("c");
-
         }
+
+        // iterate through all text boxes with tag "clearable", clear contents
+        private void ClearCalculationField()
+        {
+            foreach (Control c in Controls)
+            {
+                if (c is TextBox && c.Tag != null &&
+                    c.Tag.ToString() == "clearable")
+                    ((TextBox)c).Clear();
+                // for text boxes inside group box
+                foreach (Control childc in c.Controls)
+                {
+                    if (childc is TextBox && childc.Tag != null &&
+                        childc.Tag.ToString() == "clearable")
+                        ((TextBox)childc).Clear();
+                }
+            }
+        }
+
     }
 }

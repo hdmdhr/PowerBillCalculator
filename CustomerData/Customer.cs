@@ -6,6 +6,13 @@ using System.Threading.Tasks;
 
 namespace CustomerData
 {
+    /*
+     * Author: DongMing Hu
+     * Date: Feb. 27, 2019
+     * Purpose: Model layer of MVC pattern. Defined a base class for all types of customers.
+     * 
+     */
+
     public class Customer
     {
         // private properties
@@ -16,7 +23,7 @@ namespace CustomerData
         // public properties
         public int AccountNo {
             get => accountNo;
-            set => accountNo = Math.Abs(value);
+            set => accountNo = Math.Abs(value);  // if negative, convert to positive
         }
         public string CustomerName { get; set; }
         public char CustomerType { get => customerType; set
@@ -31,7 +38,7 @@ namespace CustomerData
         public double ChargeAmount
         {
             get => chargeAmount;
-            set => chargeAmount = Math.Abs(value);
+            set => chargeAmount = Math.Abs(value);  // if negative, convert to positive
         }
 
         // constructors
@@ -66,11 +73,14 @@ namespace CustomerData
             return str;
         }
 
-        // dummy method for further overriding, second parameter opUse is only used for calculating industrial user
-        //public virtual double CalculateCharge(int usage, int opUse = 0)
-        //{
-        //    return 0;
-        //}
+        // deprecated method: a dummy calculation method only meant to be overridden in extending classes. But since it does nothing and causing its overridden methods unable to be marked as static, I decided it does more evil than good, hence deprecated it.
+
+        /*
+        public virtual double CalculateCharge(int usage, int opUse = 0)
+        {
+            return 0;
+        }
+        */
 
     }
 }

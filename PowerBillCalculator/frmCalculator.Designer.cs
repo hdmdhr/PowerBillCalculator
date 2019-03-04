@@ -143,7 +143,6 @@
             this.radResidential.Name = "radResidential";
             this.radResidential.Size = new System.Drawing.Size(132, 32);
             this.radResidential.TabIndex = 0;
-            this.radResidential.TabStop = true;
             this.radResidential.Tag = "R";
             this.radResidential.Text = "Residential";
             this.radResidential.UseVisualStyleBackColor = true;
@@ -478,7 +477,7 @@
             this.txtCustNumber.Name = "txtCustNumber";
             this.txtCustNumber.Size = new System.Drawing.Size(55, 27);
             this.txtCustNumber.TabIndex = 0;
-            this.txtCustNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtCustNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label11
             // 
@@ -536,7 +535,7 @@
             this.txtIndusCount.Name = "txtIndusCount";
             this.txtIndusCount.Size = new System.Drawing.Size(36, 23);
             this.txtIndusCount.TabIndex = 0;
-            this.txtIndusCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtIndusCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtIndusTotal
             // 
@@ -582,7 +581,7 @@
             this.txtCommCount.Name = "txtCommCount";
             this.txtCommCount.Size = new System.Drawing.Size(36, 23);
             this.txtCommCount.TabIndex = 0;
-            this.txtCommCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtCommCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtCommTotal
             // 
@@ -628,7 +627,7 @@
             this.txtResiCount.Name = "txtResiCount";
             this.txtResiCount.Size = new System.Drawing.Size(36, 23);
             this.txtResiCount.TabIndex = 0;
-            this.txtResiCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtResiCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtResiTotal
             // 
@@ -683,8 +682,10 @@
             this.Font = new System.Drawing.Font("Microsoft YaHei UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.Name = "frmCalculator";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Power Bill Calculator";
             this.Load += new System.EventHandler(this.frmCalculator_Load);
+            this.Click += new System.EventHandler(this.frmCalculator_Click);
             this.grpCustType.ResumeLayout(false);
             this.grpCustType.PerformLayout();
             this.grpForUsage.ResumeLayout(false);

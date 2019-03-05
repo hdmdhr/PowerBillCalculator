@@ -213,6 +213,23 @@ namespace PowerBillCalculator
             lstCustomer.SelectedItem = null;
         }
 
+        // Listbox Got Selected: show update customer info button
+        private void lstCustomer_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lstCustomer.SelectedItem != null)
+                btnUpdate.Visible = true;
+            else
+                btnUpdate.Visible = false;
+        }
+
+        // Click on Blank Space inside Listbox: deselect customer
+        private void lstCustomer_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (lstCustomer.IndexFromPoint(e.Location) < 0)
+                lstCustomer.ClearSelected();
+        }
+
+
         //---------- Form-Level Methods -----------//
 
         // display customer list in listbox, output statistics

@@ -75,6 +75,7 @@
             this.label17 = new System.Windows.Forms.Label();
             this.txtResiCount = new System.Windows.Forms.TextBox();
             this.txtResiTotal = new System.Windows.Forms.TextBox();
+            this.btnUpdate = new System.Windows.Forms.Button();
             this.grpCustType.SuspendLayout();
             this.grpForUsage.SuspendLayout();
             this.grpForIndustrial.SuspendLayout();
@@ -143,6 +144,7 @@
             this.radResidential.Name = "radResidential";
             this.radResidential.Size = new System.Drawing.Size(132, 32);
             this.radResidential.TabIndex = 0;
+            this.radResidential.TabStop = true;
             this.radResidential.Tag = "R";
             this.radResidential.Text = "Residential";
             this.radResidential.UseVisualStyleBackColor = true;
@@ -369,6 +371,7 @@
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.btnDelete);
+            this.groupBox2.Controls.Add(this.btnUpdate);
             this.groupBox2.Controls.Add(this.btnAddCust);
             this.groupBox2.Location = new System.Drawing.Point(519, 137);
             this.groupBox2.Name = "groupBox2";
@@ -423,7 +426,7 @@
             // 
             this.btnDelete.AutoSize = true;
             this.btnDelete.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(88, 86);
+            this.btnDelete.Location = new System.Drawing.Point(24, 86);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(0);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(67, 31);
@@ -434,8 +437,9 @@
             // 
             // btnAddCust
             // 
+            this.btnAddCust.AutoSize = true;
             this.btnAddCust.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddCust.Location = new System.Drawing.Point(189, 86);
+            this.btnAddCust.Location = new System.Drawing.Point(123, 86);
             this.btnAddCust.Margin = new System.Windows.Forms.Padding(0);
             this.btnAddCust.Name = "btnAddCust";
             this.btnAddCust.Size = new System.Drawing.Size(67, 31);
@@ -455,6 +459,8 @@
             this.lstCustomer.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lstCustomer.Size = new System.Drawing.Size(314, 308);
             this.lstCustomer.TabIndex = 7;
+            this.lstCustomer.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lstCustomer_MouseClick);
+            this.lstCustomer.SelectedIndexChanged += new System.EventHandler(this.lstCustomer_SelectedIndexChanged);
             // 
             // label10
             // 
@@ -641,6 +647,19 @@
             this.txtResiTotal.Tag = "";
             this.txtResiTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // btnUpdate
+            // 
+            this.btnUpdate.AutoSize = true;
+            this.btnUpdate.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdate.Location = new System.Drawing.Point(226, 86);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(0);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(74, 31);
+            this.btnUpdate.TabIndex = 5;
+            this.btnUpdate.Text = "&update";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Visible = false;
+            // 
             // frmCalculator
             // 
             this.AcceptButton = this.btnCalculate;
@@ -750,6 +769,7 @@
         private System.Windows.Forms.TextBox txtResiCount;
         private System.Windows.Forms.TextBox txtResiTotal;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnUpdate;
     }
 }
 

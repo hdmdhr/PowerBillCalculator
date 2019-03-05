@@ -257,37 +257,14 @@ namespace PowerBillCalculator
 
         // iterate through all text boxes with tag "clearable", clear contents
         private void ClearCalculationField()
-        {
-            foreach (Control c in Controls)
+        {   // create a list to collect all textboxes need to be cleared
+            var clearableBoxes = new List<TextBox>{ txtUsage, txtPeakUsage, txtOPUsage, txtPeakCharge, txtOPCharge, txtTotal};
+            // iterate through list, clear all contents
+            foreach (var tb in clearableBoxes)
             {
-                if (c is TextBox && c.Tag != null &&
-                    c.Tag.ToString() == "clearable")
-                    ((TextBox)c).Clear();
-                // for text boxes inside group box
-                foreach (Control childc in c.Controls)
-                {
-                    if (childc is TextBox && childc.Tag != null &&
-                        childc.Tag.ToString() == "clearable")
-                        ((TextBox)childc).Clear();
-                }
+                tb.Clear();
             }
         }
 
-        // -----------------------------------------------------
-
-        private void lstCustomer_SelectedValueChanged(object sender, EventArgs e)
-        {
-            if (lstCustomer.SelectedItem != null)
-            {
-                grpUpdate.Visible = true;
-                grpNewCust.Visible = false;
-            }
-            else
-            {
-                grpUpdate.Visible = false;
-                grpNewCust.Visible = true;
-            }
-
-        }
     }
 }

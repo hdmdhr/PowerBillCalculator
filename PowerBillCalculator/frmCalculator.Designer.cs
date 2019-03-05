@@ -28,14 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.grpNewCust = new System.Windows.Forms.GroupBox();
-            this.tblPnlNewCust = new System.Windows.Forms.TableLayoutPanel();
-            this.btnAddCust = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.txtAcctNum = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtCustName = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.lstCustomer = new System.Windows.Forms.ListBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtCustNumber = new System.Windows.Forms.TextBox();
@@ -89,17 +81,16 @@
             this.btnReset = new System.Windows.Forms.Button();
             this.btnCalculate = new System.Windows.Forms.Button();
             this.tblPnlRight = new System.Windows.Forms.TableLayoutPanel();
-            this.grpUpdate = new System.Windows.Forms.GroupBox();
-            this.tblPnlUpdate = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
-            this.label18 = new System.Windows.Forms.Label();
-            this.cmbCustType = new System.Windows.Forms.ComboBox();
-            this.txtAdditionalAmt = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.btnUpdate = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.grpNewCust.SuspendLayout();
-            this.tblPnlNewCust.SuspendLayout();
+            this.tblPnlNewCust = new System.Windows.Forms.TableLayoutPanel();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnAddCust = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtCustName = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtAcctNum = new System.Windows.Forms.TextBox();
+            this.grpNewCust = new System.Windows.Forms.GroupBox();
             this.tblPnlMain.SuspendLayout();
             this.tblPanlTop.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -117,118 +108,10 @@
             this.tableLayoutPanel8.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
             this.tblPnlRight.SuspendLayout();
-            this.grpUpdate.SuspendLayout();
-            this.tblPnlUpdate.SuspendLayout();
-            this.tableLayoutPanel10.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            this.tblPnlNewCust.SuspendLayout();
+            this.grpNewCust.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // grpNewCust
-            // 
-            this.grpNewCust.BackColor = System.Drawing.Color.Transparent;
-            this.grpNewCust.Controls.Add(this.tblPnlNewCust);
-            this.grpNewCust.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grpNewCust.Font = new System.Drawing.Font("Microsoft YaHei UI", 5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpNewCust.Location = new System.Drawing.Point(3, 3);
-            this.grpNewCust.Name = "grpNewCust";
-            this.grpNewCust.Padding = new System.Windows.Forms.Padding(0);
-            this.grpNewCust.Size = new System.Drawing.Size(460, 97);
-            this.grpNewCust.TabIndex = 2;
-            this.grpNewCust.TabStop = false;
-            // 
-            // tblPnlNewCust
-            // 
-            this.tblPnlNewCust.ColumnCount = 3;
-            this.tblPnlNewCust.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tblPnlNewCust.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tblPnlNewCust.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tblPnlNewCust.Controls.Add(this.btnAddCust, 2, 0);
-            this.tblPnlNewCust.Controls.Add(this.btnDelete, 2, 1);
-            this.tblPnlNewCust.Controls.Add(this.txtAcctNum, 1, 1);
-            this.tblPnlNewCust.Controls.Add(this.label8, 0, 0);
-            this.tblPnlNewCust.Controls.Add(this.txtCustName, 1, 0);
-            this.tblPnlNewCust.Controls.Add(this.label9, 0, 1);
-            this.tblPnlNewCust.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tblPnlNewCust.Location = new System.Drawing.Point(0, 9);
-            this.tblPnlNewCust.Name = "tblPnlNewCust";
-            this.tblPnlNewCust.RowCount = 2;
-            this.tblPnlNewCust.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tblPnlNewCust.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tblPnlNewCust.Size = new System.Drawing.Size(460, 88);
-            this.tblPnlNewCust.TabIndex = 10;
-            // 
-            // btnAddCust
-            // 
-            this.btnAddCust.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnAddCust.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddCust.Location = new System.Drawing.Point(380, 6);
-            this.btnAddCust.Margin = new System.Windows.Forms.Padding(5);
-            this.btnAddCust.Name = "btnAddCust";
-            this.btnAddCust.Size = new System.Drawing.Size(67, 31);
-            this.btnAddCust.TabIndex = 5;
-            this.btnAddCust.Text = "&add";
-            this.btnAddCust.UseVisualStyleBackColor = true;
-            this.btnAddCust.Click += new System.EventHandler(this.btnAddCust_Click);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnDelete.AutoSize = true;
-            this.btnDelete.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(380, 50);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(5);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(67, 31);
-            this.btnDelete.TabIndex = 5;
-            this.btnDelete.Text = "&delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // txtAcctNum
-            // 
-            this.txtAcctNum.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtAcctNum.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAcctNum.Location = new System.Drawing.Point(209, 53);
-            this.txtAcctNum.Margin = new System.Windows.Forms.Padding(25, 0, 0, 0);
-            this.txtAcctNum.Name = "txtAcctNum";
-            this.txtAcctNum.Size = new System.Drawing.Size(105, 25);
-            this.txtAcctNum.TabIndex = 4;
-            // 
-            // label8
-            // 
-            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(57, 12);
-            this.label8.Margin = new System.Windows.Forms.Padding(0, 0, 15, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(112, 20);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "Customer Name";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // txtCustName
-            // 
-            this.txtCustName.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtCustName.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCustName.Location = new System.Drawing.Point(209, 9);
-            this.txtCustName.Margin = new System.Windows.Forms.Padding(25, 0, 0, 0);
-            this.txtCustName.Name = "txtCustName";
-            this.txtCustName.Size = new System.Drawing.Size(105, 25);
-            this.txtCustName.TabIndex = 3;
-            // 
-            // label9
-            // 
-            this.label9.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(51, 56);
-            this.label9.Margin = new System.Windows.Forms.Padding(0, 0, 15, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(118, 20);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "Account Number";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lstCustomer
             // 
@@ -237,13 +120,12 @@
             this.lstCustomer.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 10F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstCustomer.FormattingEnabled = true;
             this.lstCustomer.ItemHeight = 19;
-            this.lstCustomer.Location = new System.Drawing.Point(10, 216);
+            this.lstCustomer.Location = new System.Drawing.Point(10, 113);
             this.lstCustomer.Margin = new System.Windows.Forms.Padding(10);
             this.lstCustomer.Name = "lstCustomer";
             this.lstCustomer.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lstCustomer.Size = new System.Drawing.Size(446, 188);
+            this.lstCustomer.Size = new System.Drawing.Size(446, 270);
             this.lstCustomer.TabIndex = 7;
-            this.lstCustomer.SelectedValueChanged += new System.EventHandler(this.lstCustomer_SelectedValueChanged);
             // 
             // label10
             // 
@@ -251,7 +133,7 @@
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(12, 77);
+            this.label10.Location = new System.Drawing.Point(12, 94);
             this.label10.Margin = new System.Windows.Forms.Padding(0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(90, 20);
@@ -264,7 +146,7 @@
             this.txtCustNumber.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtCustNumber.Enabled = false;
             this.txtCustNumber.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCustNumber.Location = new System.Drawing.Point(145, 74);
+            this.txtCustNumber.Location = new System.Drawing.Point(145, 90);
             this.txtCustNumber.Margin = new System.Windows.Forms.Padding(0);
             this.txtCustNumber.Name = "txtCustNumber";
             this.txtCustNumber.Size = new System.Drawing.Size(55, 27);
@@ -277,7 +159,7 @@
             this.label11.AutoSize = true;
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(240, 77);
+            this.label11.Location = new System.Drawing.Point(240, 94);
             this.label11.Margin = new System.Windows.Forms.Padding(0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(95, 20);
@@ -290,7 +172,7 @@
             this.txtTotalCharges.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtTotalCharges.Enabled = false;
             this.txtTotalCharges.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotalCharges.Location = new System.Drawing.Point(364, 74);
+            this.txtTotalCharges.Location = new System.Drawing.Point(364, 90);
             this.txtTotalCharges.Margin = new System.Windows.Forms.Padding(0);
             this.txtTotalCharges.Name = "txtTotalCharges";
             this.txtTotalCharges.Size = new System.Drawing.Size(77, 27);
@@ -303,7 +185,7 @@
             this.label12.AutoSize = true;
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(29, 49);
+            this.label12.Location = new System.Drawing.Point(29, 59);
             this.label12.Margin = new System.Windows.Forms.Padding(0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(57, 17);
@@ -317,7 +199,7 @@
             this.label13.AutoSize = true;
             this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(264, 49);
+            this.label13.Location = new System.Drawing.Point(264, 59);
             this.label13.Margin = new System.Windows.Forms.Padding(0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(47, 17);
@@ -330,7 +212,7 @@
             this.txtIndusCount.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtIndusCount.Enabled = false;
             this.txtIndusCount.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIndusCount.Location = new System.Drawing.Point(154, 46);
+            this.txtIndusCount.Location = new System.Drawing.Point(154, 56);
             this.txtIndusCount.Margin = new System.Windows.Forms.Padding(0);
             this.txtIndusCount.Name = "txtIndusCount";
             this.txtIndusCount.Size = new System.Drawing.Size(36, 23);
@@ -342,7 +224,7 @@
             this.txtIndusTotal.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtIndusTotal.Enabled = false;
             this.txtIndusTotal.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIndusTotal.Location = new System.Drawing.Point(364, 46);
+            this.txtIndusTotal.Location = new System.Drawing.Point(364, 56);
             this.txtIndusTotal.Margin = new System.Windows.Forms.Padding(0);
             this.txtIndusTotal.Name = "txtIndusTotal";
             this.txtIndusTotal.Size = new System.Drawing.Size(77, 23);
@@ -355,7 +237,7 @@
             this.label14.AutoSize = true;
             this.label14.BackColor = System.Drawing.Color.Transparent;
             this.label14.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(20, 26);
+            this.label14.Location = new System.Drawing.Point(20, 32);
             this.label14.Margin = new System.Windows.Forms.Padding(0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(75, 17);
@@ -369,7 +251,7 @@
             this.label15.AutoSize = true;
             this.label15.BackColor = System.Drawing.Color.Transparent;
             this.label15.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(264, 26);
+            this.label15.Location = new System.Drawing.Point(264, 32);
             this.label15.Margin = new System.Windows.Forms.Padding(0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(47, 17);
@@ -382,7 +264,7 @@
             this.txtCommCount.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtCommCount.Enabled = false;
             this.txtCommCount.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCommCount.Location = new System.Drawing.Point(154, 23);
+            this.txtCommCount.Location = new System.Drawing.Point(154, 29);
             this.txtCommCount.Margin = new System.Windows.Forms.Padding(0);
             this.txtCommCount.Name = "txtCommCount";
             this.txtCommCount.Size = new System.Drawing.Size(36, 23);
@@ -394,7 +276,7 @@
             this.txtCommTotal.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtCommTotal.Enabled = false;
             this.txtCommTotal.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCommTotal.Location = new System.Drawing.Point(364, 23);
+            this.txtCommTotal.Location = new System.Drawing.Point(364, 29);
             this.txtCommTotal.Margin = new System.Windows.Forms.Padding(0);
             this.txtCommTotal.Name = "txtCommTotal";
             this.txtCommTotal.Size = new System.Drawing.Size(77, 23);
@@ -407,7 +289,7 @@
             this.label16.AutoSize = true;
             this.label16.BackColor = System.Drawing.Color.Transparent;
             this.label16.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(24, 3);
+            this.label16.Location = new System.Drawing.Point(24, 5);
             this.label16.Margin = new System.Windows.Forms.Padding(0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(67, 17);
@@ -421,7 +303,7 @@
             this.label17.AutoSize = true;
             this.label17.BackColor = System.Drawing.Color.Transparent;
             this.label17.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(264, 3);
+            this.label17.Location = new System.Drawing.Point(264, 5);
             this.label17.Margin = new System.Windows.Forms.Padding(0);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(47, 17);
@@ -434,7 +316,7 @@
             this.txtResiCount.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtResiCount.Enabled = false;
             this.txtResiCount.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtResiCount.Location = new System.Drawing.Point(154, 0);
+            this.txtResiCount.Location = new System.Drawing.Point(154, 2);
             this.txtResiCount.Margin = new System.Windows.Forms.Padding(0);
             this.txtResiCount.Name = "txtResiCount";
             this.txtResiCount.Size = new System.Drawing.Size(36, 23);
@@ -446,7 +328,7 @@
             this.txtResiTotal.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtResiTotal.Enabled = false;
             this.txtResiTotal.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtResiTotal.Location = new System.Drawing.Point(364, 0);
+            this.txtResiTotal.Location = new System.Drawing.Point(364, 2);
             this.txtResiTotal.Margin = new System.Windows.Forms.Padding(0);
             this.txtResiTotal.Name = "txtResiTotal";
             this.txtResiTotal.Size = new System.Drawing.Size(77, 23);
@@ -971,134 +853,20 @@
             // 
             // tblPnlRight
             // 
-            this.tblPnlRight.AutoSize = true;
             this.tblPnlRight.ColumnCount = 1;
             this.tblPnlRight.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblPnlRight.Controls.Add(this.grpUpdate, 0, 1);
             this.tblPnlRight.Controls.Add(this.grpNewCust, 0, 0);
-            this.tblPnlRight.Controls.Add(this.lstCustomer, 0, 2);
-            this.tblPnlRight.Controls.Add(this.tableLayoutPanel2, 0, 3);
+            this.tblPnlRight.Controls.Add(this.lstCustomer, 0, 1);
+            this.tblPnlRight.Controls.Add(this.tableLayoutPanel2, 0, 2);
             this.tblPnlRight.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tblPnlRight.Location = new System.Drawing.Point(475, 3);
             this.tblPnlRight.Name = "tblPnlRight";
-            this.tblPnlRight.RowCount = 4;
+            this.tblPnlRight.RowCount = 3;
             this.tblPnlRight.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tblPnlRight.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tblPnlRight.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 65F));
-            this.tblPnlRight.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35F));
+            this.tblPnlRight.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tblPnlRight.Size = new System.Drawing.Size(466, 526);
             this.tblPnlRight.TabIndex = 1;
-            // 
-            // grpUpdate
-            // 
-            this.grpUpdate.BackColor = System.Drawing.Color.Transparent;
-            this.grpUpdate.Controls.Add(this.tblPnlUpdate);
-            this.grpUpdate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grpUpdate.Font = new System.Drawing.Font("Microsoft YaHei UI", 5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpUpdate.Location = new System.Drawing.Point(3, 106);
-            this.grpUpdate.Name = "grpUpdate";
-            this.grpUpdate.Padding = new System.Windows.Forms.Padding(0);
-            this.grpUpdate.Size = new System.Drawing.Size(460, 97);
-            this.grpUpdate.TabIndex = 9;
-            this.grpUpdate.TabStop = false;
-            this.grpUpdate.Visible = false;
-            // 
-            // tblPnlUpdate
-            // 
-            this.tblPnlUpdate.ColumnCount = 2;
-            this.tblPnlUpdate.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.tblPnlUpdate.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tblPnlUpdate.Controls.Add(this.tableLayoutPanel10, 0, 0);
-            this.tblPnlUpdate.Controls.Add(this.btnUpdate, 1, 0);
-            this.tblPnlUpdate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tblPnlUpdate.Location = new System.Drawing.Point(0, 9);
-            this.tblPnlUpdate.Name = "tblPnlUpdate";
-            this.tblPnlUpdate.RowCount = 1;
-            this.tblPnlUpdate.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblPnlUpdate.Size = new System.Drawing.Size(460, 88);
-            this.tblPnlUpdate.TabIndex = 0;
-            // 
-            // tableLayoutPanel10
-            // 
-            this.tableLayoutPanel10.ColumnCount = 2;
-            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel10.Controls.Add(this.label18, 0, 0);
-            this.tableLayoutPanel10.Controls.Add(this.cmbCustType, 1, 1);
-            this.tableLayoutPanel10.Controls.Add(this.txtAdditionalAmt, 1, 0);
-            this.tableLayoutPanel10.Controls.Add(this.label19, 0, 1);
-            this.tableLayoutPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel10.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel10.Name = "tableLayoutPanel10";
-            this.tableLayoutPanel10.RowCount = 2;
-            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel10.Size = new System.Drawing.Size(362, 82);
-            this.tableLayoutPanel10.TabIndex = 9;
-            // 
-            // label18
-            // 
-            this.label18.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(73, 10);
-            this.label18.Margin = new System.Windows.Forms.Padding(0, 0, 15, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(93, 20);
-            this.label18.TabIndex = 0;
-            this.label18.Text = "New Amount";
-            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // cmbCustType
-            // 
-            this.cmbCustType.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.cmbCustType.Font = new System.Drawing.Font("Microsoft YaHei UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbCustType.FormattingEnabled = true;
-            this.cmbCustType.Items.AddRange(new object[] {
-            "Residential",
-            "Commercial",
-            "Industrial"});
-            this.cmbCustType.Location = new System.Drawing.Point(206, 49);
-            this.cmbCustType.Margin = new System.Windows.Forms.Padding(25, 5, 5, 5);
-            this.cmbCustType.Name = "cmbCustType";
-            this.cmbCustType.Size = new System.Drawing.Size(113, 24);
-            this.cmbCustType.TabIndex = 1;
-            // 
-            // txtAdditionalAmt
-            // 
-            this.txtAdditionalAmt.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtAdditionalAmt.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAdditionalAmt.Location = new System.Drawing.Point(206, 8);
-            this.txtAdditionalAmt.Margin = new System.Windows.Forms.Padding(25, 0, 0, 0);
-            this.txtAdditionalAmt.Name = "txtAdditionalAmt";
-            this.txtAdditionalAmt.Size = new System.Drawing.Size(105, 25);
-            this.txtAdditionalAmt.TabIndex = 4;
-            // 
-            // label19
-            // 
-            this.label19.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(61, 51);
-            this.label19.Margin = new System.Windows.Forms.Padding(0, 0, 15, 0);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(105, 20);
-            this.label19.TabIndex = 0;
-            this.label19.Text = "Customer Type";
-            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnUpdate.AutoSize = true;
-            this.btnUpdate.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Location = new System.Drawing.Point(380, 28);
-            this.btnUpdate.Margin = new System.Windows.Forms.Padding(5);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(67, 31);
-            this.btnUpdate.TabIndex = 5;
-            this.btnUpdate.Text = "&update";
-            this.btnUpdate.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel2
             // 
@@ -1124,15 +892,141 @@
             this.tableLayoutPanel2.Controls.Add(this.label12, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.label14, 0, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 417);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 396);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 4;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 34F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(460, 106);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(460, 127);
             this.tableLayoutPanel2.TabIndex = 8;
+            // 
+            // tblPnlNewCust
+            // 
+            this.tblPnlNewCust.ColumnCount = 3;
+            this.tblPnlNewCust.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tblPnlNewCust.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.78261F));
+            this.tblPnlNewCust.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.21739F));
+            this.tblPnlNewCust.Controls.Add(this.txtAcctNum, 1, 1);
+            this.tblPnlNewCust.Controls.Add(this.label8, 0, 0);
+            this.tblPnlNewCust.Controls.Add(this.txtCustName, 1, 0);
+            this.tblPnlNewCust.Controls.Add(this.label9, 0, 1);
+            this.tblPnlNewCust.Controls.Add(this.btnAddCust, 0, 2);
+            this.tblPnlNewCust.Controls.Add(this.button1, 2, 2);
+            this.tblPnlNewCust.Controls.Add(this.btnDelete, 1, 2);
+            this.tblPnlNewCust.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tblPnlNewCust.Location = new System.Drawing.Point(0, 9);
+            this.tblPnlNewCust.Name = "tblPnlNewCust";
+            this.tblPnlNewCust.RowCount = 3;
+            this.tblPnlNewCust.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tblPnlNewCust.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tblPnlNewCust.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tblPnlNewCust.Size = new System.Drawing.Size(460, 111);
+            this.tblPnlNewCust.TabIndex = 10;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnDelete.AutoSize = true;
+            this.btnDelete.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.Location = new System.Drawing.Point(230, 75);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(5);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(67, 31);
+            this.btnDelete.TabIndex = 5;
+            this.btnDelete.Text = "&delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button1.AutoSize = true;
+            this.button1.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(364, 75);
+            this.button1.Margin = new System.Windows.Forms.Padding(5);
+            this.button1.MinimumSize = new System.Drawing.Size(0, 20);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(74, 31);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "&update";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.btnAddCust_Click);
+            // 
+            // btnAddCust
+            // 
+            this.btnAddCust.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnAddCust.AutoSize = true;
+            this.btnAddCust.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddCust.Location = new System.Drawing.Point(58, 75);
+            this.btnAddCust.Margin = new System.Windows.Forms.Padding(5);
+            this.btnAddCust.Name = "btnAddCust";
+            this.btnAddCust.Size = new System.Drawing.Size(67, 31);
+            this.btnAddCust.TabIndex = 5;
+            this.btnAddCust.Text = "&add";
+            this.btnAddCust.UseVisualStyleBackColor = true;
+            this.btnAddCust.Click += new System.EventHandler(this.btnAddCust_Click);
+            // 
+            // label9
+            // 
+            this.label9.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(51, 42);
+            this.label9.Margin = new System.Windows.Forms.Padding(0, 0, 15, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(118, 20);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "Account Number";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtCustName
+            // 
+            this.txtCustName.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtCustName.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCustName.Location = new System.Drawing.Point(209, 5);
+            this.txtCustName.Margin = new System.Windows.Forms.Padding(25, 5, 0, 5);
+            this.txtCustName.Name = "txtCustName";
+            this.txtCustName.Size = new System.Drawing.Size(105, 25);
+            this.txtCustName.TabIndex = 3;
+            // 
+            // label8
+            // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(57, 7);
+            this.label8.Margin = new System.Windows.Forms.Padding(0, 0, 15, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(112, 20);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Customer Name";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtAcctNum
+            // 
+            this.txtAcctNum.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtAcctNum.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAcctNum.Location = new System.Drawing.Point(209, 40);
+            this.txtAcctNum.Margin = new System.Windows.Forms.Padding(25, 5, 0, 5);
+            this.txtAcctNum.Name = "txtAcctNum";
+            this.txtAcctNum.Size = new System.Drawing.Size(105, 25);
+            this.txtAcctNum.TabIndex = 4;
+            // 
+            // grpNewCust
+            // 
+            this.grpNewCust.AutoSize = true;
+            this.grpNewCust.BackColor = System.Drawing.Color.Transparent;
+            this.grpNewCust.Controls.Add(this.tblPnlNewCust);
+            this.grpNewCust.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grpNewCust.Font = new System.Drawing.Font("Microsoft YaHei UI", 5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpNewCust.Location = new System.Drawing.Point(3, 3);
+            this.grpNewCust.Name = "grpNewCust";
+            this.grpNewCust.Padding = new System.Windows.Forms.Padding(0);
+            this.grpNewCust.Size = new System.Drawing.Size(460, 120);
+            this.grpNewCust.TabIndex = 2;
+            this.grpNewCust.TabStop = false;
             // 
             // frmCalculator
             // 
@@ -1153,9 +1047,6 @@
             this.Text = "Power Bill Calculator";
             this.Load += new System.EventHandler(this.frmCalculator_Load);
             this.Click += new System.EventHandler(this.frmCalculator_Click);
-            this.grpNewCust.ResumeLayout(false);
-            this.tblPnlNewCust.ResumeLayout(false);
-            this.tblPnlNewCust.PerformLayout();
             this.tblPnlMain.ResumeLayout(false);
             this.tblPanlTop.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
@@ -1181,19 +1072,17 @@
             this.tableLayoutPanel9.ResumeLayout(false);
             this.tableLayoutPanel9.PerformLayout();
             this.tblPnlRight.ResumeLayout(false);
-            this.grpUpdate.ResumeLayout(false);
-            this.tblPnlUpdate.ResumeLayout(false);
-            this.tblPnlUpdate.PerformLayout();
-            this.tableLayoutPanel10.ResumeLayout(false);
-            this.tableLayoutPanel10.PerformLayout();
+            this.tblPnlRight.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
+            this.tblPnlNewCust.ResumeLayout(false);
+            this.tblPnlNewCust.PerformLayout();
+            this.grpNewCust.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.GroupBox grpNewCust;
         private System.Windows.Forms.ListBox lstCustomer;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtCustNumber;
@@ -1222,13 +1111,6 @@
         private System.Windows.Forms.RadioButton radCommercial;
         private System.Windows.Forms.RadioButton radResidential;
         private System.Windows.Forms.TableLayoutPanel tblPnlBottom;
-        private System.Windows.Forms.TableLayoutPanel tblPnlNewCust;
-        private System.Windows.Forms.Button btnAddCust;
-        private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.TextBox txtAcctNum;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtCustName;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TableLayoutPanel tblPnlLeft;
         private System.Windows.Forms.GroupBox grpForUsage;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
@@ -1254,15 +1136,16 @@
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Button btnCalculate;
         private System.Windows.Forms.TableLayoutPanel tblPnlRight;
-        private System.Windows.Forms.GroupBox grpUpdate;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.TableLayoutPanel tblPnlUpdate;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.ComboBox cmbCustType;
-        private System.Windows.Forms.TextBox txtAdditionalAmt;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.GroupBox grpNewCust;
+        private System.Windows.Forms.TableLayoutPanel tblPnlNewCust;
+        private System.Windows.Forms.TextBox txtAcctNum;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtCustName;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button btnAddCust;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnDelete;
     }
 }
 

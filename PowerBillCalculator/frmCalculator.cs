@@ -229,6 +229,17 @@ namespace PowerBillCalculator
                 lstCustomer.ClearSelected();
         }
 
+        // Update Button Clicked: show update dialog form
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            Form updateForm = new frmUpdate((Customer)lstCustomer.SelectedItem);
+            var result = updateForm.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                CustomerDB.LoadCustomers();
+            }
+        }
+
 
         //---------- Form-Level Methods -----------//
 
@@ -289,6 +300,5 @@ namespace PowerBillCalculator
                 }
             }
         }
-
     }
 }

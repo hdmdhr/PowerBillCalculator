@@ -57,6 +57,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
             this.btnAddCust = new System.Windows.Forms.Button();
             this.lstCustomer = new System.Windows.Forms.ListBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -75,7 +76,6 @@
             this.label17 = new System.Windows.Forms.Label();
             this.txtResiCount = new System.Windows.Forms.TextBox();
             this.txtResiTotal = new System.Windows.Forms.TextBox();
-            this.btnUpdate = new System.Windows.Forms.Button();
             this.grpCustType.SuspendLayout();
             this.grpForUsage.SuspendLayout();
             this.grpForIndustrial.SuspendLayout();
@@ -435,6 +435,20 @@
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
+            // btnUpdate
+            // 
+            this.btnUpdate.AutoSize = true;
+            this.btnUpdate.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdate.Location = new System.Drawing.Point(226, 86);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(0);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(74, 31);
+            this.btnUpdate.TabIndex = 5;
+            this.btnUpdate.Text = "&update";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Visible = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
             // btnAddCust
             // 
             this.btnAddCust.AutoSize = true;
@@ -450,7 +464,7 @@
             // 
             // lstCustomer
             // 
-            this.lstCustomer.BackColor = System.Drawing.Color.BlanchedAlmond;
+            this.lstCustomer.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.lstCustomer.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 10F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstCustomer.FormattingEnabled = true;
             this.lstCustomer.ItemHeight = 19;
@@ -646,19 +660,6 @@
             this.txtResiTotal.TabIndex = 0;
             this.txtResiTotal.Tag = "";
             this.txtResiTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.AutoSize = true;
-            this.btnUpdate.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Location = new System.Drawing.Point(226, 86);
-            this.btnUpdate.Margin = new System.Windows.Forms.Padding(0);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(74, 31);
-            this.btnUpdate.TabIndex = 5;
-            this.btnUpdate.Text = "&update";
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Visible = false;
             // 
             // frmCalculator
             // 

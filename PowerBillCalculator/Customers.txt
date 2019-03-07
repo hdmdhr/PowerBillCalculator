@@ -1,3 +1,3 @@
-301,Tony Stark,I,192.75
-101,Daniel Hu,R,32.00
-102,Bat Man,R,136.00
+101,Daniel Hu,R,200.00
+201,ABC,C,127.50
+301,asdfsa,I,269.50

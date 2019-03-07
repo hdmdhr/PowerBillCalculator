@@ -42,6 +42,7 @@
             this.cmbCustType = new System.Windows.Forms.ComboBox();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
             // 
             // txtAcctNum
@@ -199,12 +200,21 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // maskedTextBox1
+            // 
+            this.maskedTextBox1.Location = new System.Drawing.Point(361, 61);
+            this.maskedTextBox1.Mask = "00000000000";
+            this.maskedTextBox1.Name = "maskedTextBox1";
+            this.maskedTextBox1.Size = new System.Drawing.Size(100, 25);
+            this.maskedTextBox1.TabIndex = 11;
+            // 
             // frmUpdate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::PowerBillCalculator.Properties.Resources.yellow_lightening;
             this.ClientSize = new System.Drawing.Size(473, 225);
+            this.Controls.Add(this.maskedTextBox1);
             this.Controls.Add(this.cmbCustType);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnUpdate);
@@ -225,7 +235,8 @@
             this.MaximumSize = new System.Drawing.Size(600, 400);
             this.MinimumSize = new System.Drawing.Size(200, 100);
             this.Name = "frmUpdate";
-            this.Text = "Update Customer Information";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Update Customer Info";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -247,5 +258,6 @@
         private System.Windows.Forms.ComboBox cmbCustType;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
     }
 }

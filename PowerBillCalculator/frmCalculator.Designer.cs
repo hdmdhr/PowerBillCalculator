@@ -57,7 +57,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
             this.btnAddCust = new System.Windows.Forms.Button();
             this.lstCustomer = new System.Windows.Forms.ListBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -371,7 +371,7 @@
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.btnDelete);
-            this.groupBox2.Controls.Add(this.btnUpdate);
+            this.groupBox2.Controls.Add(this.btnEdit);
             this.groupBox2.Controls.Add(this.btnAddCust);
             this.groupBox2.Location = new System.Drawing.Point(519, 137);
             this.groupBox2.Name = "groupBox2";
@@ -426,7 +426,7 @@
             // 
             this.btnDelete.AutoSize = true;
             this.btnDelete.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(24, 86);
+            this.btnDelete.Location = new System.Drawing.Point(121, 86);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(0);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(67, 31);
@@ -435,28 +435,28 @@
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // btnUpdate
+            // btnEdit
             // 
-            this.btnUpdate.AutoSize = true;
-            this.btnUpdate.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Location = new System.Drawing.Point(226, 86);
-            this.btnUpdate.Margin = new System.Windows.Forms.Padding(0);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(74, 31);
-            this.btnUpdate.TabIndex = 5;
-            this.btnUpdate.Text = "&update";
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Visible = false;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            this.btnEdit.AutoSize = true;
+            this.btnEdit.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEdit.Location = new System.Drawing.Point(236, 86);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(0);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(55, 31);
+            this.btnEdit.TabIndex = 5;
+            this.btnEdit.Text = "&edit";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Visible = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnAddCust
             // 
             this.btnAddCust.AutoSize = true;
             this.btnAddCust.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddCust.Location = new System.Drawing.Point(123, 86);
+            this.btnAddCust.Location = new System.Drawing.Point(24, 86);
             this.btnAddCust.Margin = new System.Windows.Forms.Padding(0);
             this.btnAddCust.Name = "btnAddCust";
-            this.btnAddCust.Size = new System.Drawing.Size(67, 31);
+            this.btnAddCust.Size = new System.Drawing.Size(49, 31);
             this.btnAddCust.TabIndex = 5;
             this.btnAddCust.Text = "&add";
             this.btnAddCust.UseVisualStyleBackColor = true;
@@ -480,7 +480,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(507, 656);
+            this.label10.Location = new System.Drawing.Point(514, 654);
             this.label10.Margin = new System.Windows.Forms.Padding(0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(90, 20);
@@ -492,10 +492,10 @@
             // 
             this.txtCustNumber.Enabled = false;
             this.txtCustNumber.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCustNumber.Location = new System.Drawing.Point(597, 653);
+            this.txtCustNumber.Location = new System.Drawing.Point(616, 651);
             this.txtCustNumber.Margin = new System.Windows.Forms.Padding(0);
             this.txtCustNumber.Name = "txtCustNumber";
-            this.txtCustNumber.Size = new System.Drawing.Size(55, 27);
+            this.txtCustNumber.Size = new System.Drawing.Size(58, 27);
             this.txtCustNumber.TabIndex = 0;
             this.txtCustNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -503,19 +503,19 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(652, 656);
+            this.label11.Location = new System.Drawing.Point(690, 654);
             this.label11.Margin = new System.Windows.Forms.Padding(0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(95, 20);
+            this.label11.Size = new System.Drawing.Size(54, 20);
             this.label11.TabIndex = 0;
-            this.label11.Text = "Total Charge";
+            this.label11.Text = "Total $";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // txtTotalCharges
             // 
             this.txtTotalCharges.Enabled = false;
             this.txtTotalCharges.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotalCharges.Location = new System.Drawing.Point(756, 653);
+            this.txtTotalCharges.Location = new System.Drawing.Point(756, 651);
             this.txtTotalCharges.Margin = new System.Windows.Forms.Padding(0);
             this.txtTotalCharges.Name = "txtTotalCharges";
             this.txtTotalCharges.Size = new System.Drawing.Size(77, 27);
@@ -526,7 +526,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(540, 628);
+            this.label12.Location = new System.Drawing.Point(547, 628);
             this.label12.Margin = new System.Windows.Forms.Padding(0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(57, 17);
@@ -538,12 +538,12 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(686, 628);
+            this.label13.Location = new System.Drawing.Point(729, 628);
             this.label13.Margin = new System.Windows.Forms.Padding(0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(47, 17);
+            this.label13.Size = new System.Drawing.Size(15, 17);
             this.label13.TabIndex = 0;
-            this.label13.Text = "Charge";
+            this.label13.Text = "$";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // txtIndusCount
@@ -553,7 +553,7 @@
             this.txtIndusCount.Location = new System.Drawing.Point(616, 625);
             this.txtIndusCount.Margin = new System.Windows.Forms.Padding(0);
             this.txtIndusCount.Name = "txtIndusCount";
-            this.txtIndusCount.Size = new System.Drawing.Size(36, 23);
+            this.txtIndusCount.Size = new System.Drawing.Size(58, 23);
             this.txtIndusCount.TabIndex = 0;
             this.txtIndusCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -572,7 +572,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(522, 602);
+            this.label14.Location = new System.Drawing.Point(529, 602);
             this.label14.Margin = new System.Windows.Forms.Padding(0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(75, 17);
@@ -584,22 +584,22 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(686, 602);
+            this.label15.Location = new System.Drawing.Point(729, 602);
             this.label15.Margin = new System.Windows.Forms.Padding(0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(47, 17);
+            this.label15.Size = new System.Drawing.Size(15, 17);
             this.label15.TabIndex = 0;
-            this.label15.Text = "Charge";
+            this.label15.Text = "$";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // txtCommCount
             // 
             this.txtCommCount.Enabled = false;
             this.txtCommCount.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCommCount.Location = new System.Drawing.Point(617, 599);
+            this.txtCommCount.Location = new System.Drawing.Point(616, 599);
             this.txtCommCount.Margin = new System.Windows.Forms.Padding(0);
             this.txtCommCount.Name = "txtCommCount";
-            this.txtCommCount.Size = new System.Drawing.Size(36, 23);
+            this.txtCommCount.Size = new System.Drawing.Size(58, 23);
             this.txtCommCount.TabIndex = 0;
             this.txtCommCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -618,7 +618,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(530, 576);
+            this.label16.Location = new System.Drawing.Point(537, 576);
             this.label16.Margin = new System.Windows.Forms.Padding(0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(67, 17);
@@ -630,12 +630,12 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(686, 576);
+            this.label17.Location = new System.Drawing.Point(729, 576);
             this.label17.Margin = new System.Windows.Forms.Padding(0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(47, 17);
+            this.label17.Size = new System.Drawing.Size(15, 17);
             this.label17.TabIndex = 0;
-            this.label17.Text = "Charge";
+            this.label17.Text = "$";
             this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // txtResiCount
@@ -645,7 +645,7 @@
             this.txtResiCount.Location = new System.Drawing.Point(616, 573);
             this.txtResiCount.Margin = new System.Windows.Forms.Padding(0);
             this.txtResiCount.Name = "txtResiCount";
-            this.txtResiCount.Size = new System.Drawing.Size(36, 23);
+            this.txtResiCount.Size = new System.Drawing.Size(58, 23);
             this.txtResiCount.TabIndex = 0;
             this.txtResiCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -770,7 +770,7 @@
         private System.Windows.Forms.TextBox txtResiCount;
         private System.Windows.Forms.TextBox txtResiTotal;
         private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnEdit;
     }
 }
 

@@ -37,9 +37,26 @@ namespace PowerBillCalculator
             }
         }
 
+        // Check if a textbox has non-negative double
+        public static bool TBHasNonNegativeDouble(TextBox tb, string txtBoxName)
+        {
+            if (TBIsEmpty(tb, txtBoxName))  // check if empty
+                return false;
+            else  // not empty, check if has double
+            {
+                if (!TBHasDouble(tb, txtBoxName))
+                    return false;
+                else  // is double, check if negative  
+                {
+                    return !TBHasNegativeValue(tb, txtBoxName);
+                }
+            }
+        }
+
         //--------------------- Breakdown Methods ---------------------------//
 
         // check if a textbox is empty, if yes, show messagebox
+        // always do this FIRST!
         public static bool TBIsEmpty(TextBox tb, string txtBoxName)
         {
             if (tb.Text == "")
@@ -53,6 +70,7 @@ namespace PowerBillCalculator
         }
 
         // check if a textbox has integer value, if no, show messagebox
+        // always do this after isEmpty validation
         public static bool TBHasInt(TextBox tb, string txtBoxName)
         {
             if (!Int32.TryParse(tb.Text, out int myInt))
@@ -66,7 +84,23 @@ namespace PowerBillCalculator
                 return true;
         }
 
+        // check if a textbox has a double value, if no, show messagebox
+        // always do this after isEmpty validation
+        public static bool TBHasDouble(TextBox tb, string txtBoxName)
+        {
+            if (!Double.TryParse(tb.Text, out double myDouble))
+            {
+                MessageBox.Show(txtBoxName + " requires a valid number.", "Input Error");
+                tb.SelectAll();  // highlight text for easy replacement
+                tb.Focus();
+                return false;
+            }
+            else
+                return true;
+        }
+
         // check if a textbox has negative value, if yes, show messagebox
+        // always do this after isEmpty validation
         public static bool TBHasNegativeValue(TextBox tb, string txtBoxName)
         {
             if (Convert.ToDouble(tb.Text) < 0)

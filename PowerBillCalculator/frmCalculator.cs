@@ -180,70 +180,73 @@ namespace PowerBillCalculator
         // Delete Button Clicked: confirm, if yes, delete obj from list, display, save to .txt
         private void btnDelete_Click(object sender, EventArgs e)
         {            
-            if (lstCustomer.SelectedItem != null)
+            if (lstCustomer.SelectedItem == null)
+                // if nothing selected, show error message to user
+                MessageBox.Show("No customer is selected.", "Please Select");
+            else
             {
                 // if listbox has a selected item, confirm with user
-                var result = MessageBox.Show("Do you really want to delete the selected customer information?", "Are You Sure", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                var result = MessageBox.Show("Do you really want to delete the selected customer information?", "Please Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
                     // if yes, remove obj from customers list and display
                     var index = lstCustomer.SelectedIndex;
                     customers.RemoveAt(index);
                     DisplayCustomerList(customers);
-                    // write updated list to .txt
+                    // save updated list to .txt
                     CustomerDB.SaveCustomers(customers);
-                    // select previous customer (if there's one) in the listbox after deletion
+
+                    // after deletion, select previous customer (if there's one)
                     var newIndex = index - 1;
                     if (lstCustomer.Items.Count >= 1)
                         lstCustomer.SelectedIndex = newIndex < 0 ? 0 : newIndex;
-                    else
-                        lstCustomer.SelectedItem = null;
                 }
-
-
-            }
-            else  // if nothing selected, show error message to user
-                MessageBox.Show("No customer is selected.", "No Selection");
-            
+            }            
         }
 
         // Somewhere in Form Clicked: deselect user in customer listbox
         private void frmCalculator_Click(object sender, EventArgs e)
         {
-            lstCustomer.SelectedItem = null;
+            lstCustomer.ClearSelected();
         }
 
-        // Listbox Got Selected: show update customer info button
-        private void lstCustomer_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (lstCustomer.SelectedItem != null)
-                btnUpdate.Visible = true;
-            else
-                btnUpdate.Visible = false;
-        }
-
-        // Click on Blank Space inside Listbox: deselect customer
+        // Click on Blank Space inside Listbox: deselect user in listbox
         private void lstCustomer_MouseClick(object sender, MouseEventArgs e)
         {
             if (lstCustomer.IndexFromPoint(e.Location) < 0)
                 lstCustomer.ClearSelected();
         }
 
-        // Update Button Clicked: show update dialog form
-        private void btnUpdate_Click(object sender, EventArgs e)
+        // Listbox Got Selected: show update customer info button
+        private void lstCustomer_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lstCustomer.SelectedItem != null)
+                btnEdit.Visible = true;
+            else
+                btnEdit.Visible = false;
+        }
+
+        // Update Button Clicked: show dialog form, if dialog result OK, means there is a changed customer obj, replace the old one with new one, save, reload .txt and display
+        private void btnEdit_Click(object sender, EventArgs e)
         {
             Form updateForm = new frmUpdate((Customer)lstCustomer.SelectedItem);
             var result = updateForm.ShowDialog();
             if (result == DialogResult.OK)
             {
-                CustomerDB.LoadCustomers();
+                // get updated customer from dialog form tag
+                var updatedCustomer = (Customer)updateForm.Tag;
+                // replace selected customer, display new list
+                customers[lstCustomer.SelectedIndex] = updatedCustomer;
+                DisplayCustomerList(customers);
+                // save updated list
+                CustomerDB.SaveCustomers(customers);
             }
         }
 
 
         //---------- Form-Level Methods -----------//
 
-        // display customer list in listbox, output statistics
+        // Display customer list in listbox, output statistics
         private void DisplayCustomerList(List<Customer> list)
         {
             // add customers into listbox, calculate individual people and charges for each type
@@ -283,7 +286,7 @@ namespace PowerBillCalculator
             txtTotalCharges.Text = (sum1 + sum2 + sum3).ToString("c");
         }
 
-        // iterate through all text boxes with tag "clearable", clear contents
+        // Iterate through all text boxes with tag "clearable", clear contents
         private void ClearCalculationField()
         {
             foreach (Control c in Controls)
@@ -291,7 +294,7 @@ namespace PowerBillCalculator
                 if (c is TextBox && c.Tag != null &&
                     c.Tag.ToString() == "clearable")
                     ((TextBox)c).Clear();
-                // for text boxes inside group box
+                // for text boxes inside a group box
                 foreach (Control childc in c.Controls)
                 {
                     if (childc is TextBox && childc.Tag != null &&

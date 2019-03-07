@@ -13,14 +13,17 @@ namespace PowerBillCalculator
 {
     public partial class frmUpdate : Form
     {
-        // properties
+        // Form-Level Properties
         private string customerName;
+        private int accountNum;
+        private double chargeAmount;
+
+        public char CustomerType { get; set; }
         public string CustomerName { get=> customerName; set {
                 customerName = value;
                 txtCustName.Text = value;
             }
         }
-        private int accountNum;
         public int AccountNum
         {
             get => accountNum; set
@@ -29,7 +32,6 @@ namespace PowerBillCalculator
                 txtAcctNum.Text = value.ToString();
             }
         }
-        private double chargeAmount;
         public double ChargeAmount
         {
             get => chargeAmount; set
@@ -38,7 +40,6 @@ namespace PowerBillCalculator
                 txtCurrentCharge.Text = value.ToString("c");
             }
         }
-        public char CustomerType { get; set; }
 
 
 
@@ -62,21 +63,34 @@ namespace PowerBillCalculator
                 cmbCustType.SelectedIndex = 2;
         }
 
+        // Add Btn Clicked: add new amount to current amount
         private void btnAdd_Click(object sender, EventArgs e)
         {
-
+            if (Validator.TBHasNonNegativeDouble(txtAmt, "New Amount"))
+                ChargeAmount += Convert.ToDouble(txtAmt.Text);
+            // setter of ChargeAmount will do the output
         }
 
+        // Deduct Btn Clicked: deduct new amount from current amount
         private void btnDeduct_Click(object sender, EventArgs e)
         {
-
+            if (Validator.TBHasNonNegativeDouble(txtAmt, "New Amount"))
+            {
+                if (ChargeAmount < Convert.ToDouble(txtAmt.Text))
+                    ChargeAmount = 0;
+                else
+                    ChargeAmount -= Convert.ToDouble(txtAmt.Text);
+            }
         }
 
+        // Update Btn Clicked: save the changed customer info into tag, set dialog result OK
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            this.Tag = new Customer(AccountNum,CustomerName,CustomerType,ChargeAmount);
             this.DialogResult = DialogResult.OK;
         }
 
+        // Cancel Btn Clicked: dismiss dialog, go back
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;

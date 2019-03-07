@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -83,17 +84,43 @@ namespace PowerBillCalculator
             }
         }
 
-        // Update Btn Clicked: save the changed customer info into tag, set dialog result OK
+        // Update Btn Clicked: do validation, if pass, update property values, save the changed customer info into tag, set dialog result OK
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            this.Tag = new Customer(AccountNum,CustomerName,CustomerType,ChargeAmount);
-            this.DialogResult = DialogResult.OK;
+            if (!Validator.TBIsEmpty(txtCustName,"Customer Name")&&
+                Validator.TBHasNonNegativeInt(txtAcctNum,"Account Number"))
+            {
+                CustomerName = txtCustName.Text;
+                AccountNum = Convert.ToInt32(txtAcctNum.Text);
+
+                this.Tag = new Customer(AccountNum, CustomerName, CustomerType, ChargeAmount);
+                this.DialogResult = DialogResult.OK;
+            }
         }
 
         // Cancel Btn Clicked: dismiss dialog, go back
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
+        }
+
+        // Combo Box Changed: change customer type
+        private void cmbCustType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cmbCustType.SelectedItem.ToString())
+            {
+                case "Residential":
+                    CustomerType = 'R';
+                    break;
+                case "Commercial":
+                    CustomerType = 'C';
+                    break;
+                case "Industrial":
+                    CustomerType = 'I';
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

@@ -42,7 +42,6 @@
             this.cmbCustType = new System.Windows.Forms.ComboBox();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
             // 
             // txtAcctNum
@@ -175,6 +174,7 @@
             this.cmbCustType.Name = "cmbCustType";
             this.cmbCustType.Size = new System.Drawing.Size(105, 27);
             this.cmbCustType.TabIndex = 10;
+            this.cmbCustType.SelectedIndexChanged += new System.EventHandler(this.cmbCustType_SelectedIndexChanged);
             // 
             // btnUpdate
             // 
@@ -200,21 +200,12 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // maskedTextBox1
-            // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(361, 61);
-            this.maskedTextBox1.Mask = "00000000000";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(100, 25);
-            this.maskedTextBox1.TabIndex = 11;
-            // 
             // frmUpdate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::PowerBillCalculator.Properties.Resources.yellow_lightening;
             this.ClientSize = new System.Drawing.Size(473, 225);
-            this.Controls.Add(this.maskedTextBox1);
             this.Controls.Add(this.cmbCustType);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnUpdate);
@@ -258,6 +249,5 @@
         private System.Windows.Forms.ComboBox cmbCustType;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
     }
 }

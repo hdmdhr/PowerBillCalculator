@@ -210,7 +210,7 @@ namespace PowerBillCalculator
             lstCustomer.ClearSelected();
         }
 
-        // Click on Blank Space inside Listbox: deselect user in listbox
+        // Click Blank Space inside Listbox: deselect user in listbox
         private void lstCustomer_MouseClick(object sender, MouseEventArgs e)
         {
             if (lstCustomer.IndexFromPoint(e.Location) < 0)
@@ -229,17 +229,22 @@ namespace PowerBillCalculator
         // Update Button Clicked: show dialog form, if dialog result OK, means there is a changed customer obj, replace the old one with new one, save, reload .txt and display
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            Form updateForm = new frmUpdate((Customer)lstCustomer.SelectedItem);
-            var result = updateForm.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                // get updated customer from dialog form tag
-                var updatedCustomer = (Customer)updateForm.Tag;
-                // replace selected customer, display new list
-                customers[lstCustomer.SelectedIndex] = updatedCustomer;
-                DisplayCustomerList(customers);
-                // save updated list
-                CustomerDB.SaveCustomers(customers);
+            if (lstCustomer.SelectedItem != null)
+            {  // if a customer is selected, pass the selected customer into dialog form, show dialog
+                Form updateForm = new frmUpdate((Customer)lstCustomer.SelectedItem);
+                var result = updateForm.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    // get updated customer from dialog form tag
+                    var updatedCustomer = (Customer)updateForm.Tag;
+                    // replace old customer, display new list, select same index
+                    var index = lstCustomer.SelectedIndex;
+                    customers[index] = updatedCustomer;
+                    DisplayCustomerList(customers);
+                    lstCustomer.SelectedIndex = index;
+                    // save updated list
+                    CustomerDB.SaveCustomers(customers);
+                }
             }
         }
 

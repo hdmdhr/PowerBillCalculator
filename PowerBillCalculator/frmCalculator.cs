@@ -40,7 +40,6 @@ namespace PowerBillCalculator
             // load customer list, display it
             customers = CustomerDB.LoadCustomers();
             DisplayListAndStats(customers);
-            //---------------------------------------
         }
 
         // Exit Button Clicked: close app 
@@ -332,6 +331,8 @@ namespace PowerBillCalculator
         /*************** DEPRECATED *********************
          
                       -- Listbox --
+                      -- Reson: swithed to listview for better GUI --
+
         // Click Blank Space inside Listbox: deselect customer in listbox
         private void lstCustomer_MouseClick(object sender, MouseEventArgs e)
         {

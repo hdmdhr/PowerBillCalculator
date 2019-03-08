@@ -67,7 +67,7 @@ namespace CustomerData
             return str;
         }
 
-        // deprecated method: a dummy calculation method only meant to be overridden in extending classes. But since it does nothing and causing its overridden methods unable to be marked as static, I decided it does more evil than good, hence deprecated it.
+        // deprecated method: a dummy calculation method only meant to be overridden in extending classes. But since it does nothing and causes its overridden methods unable to be marked as static, I decided it does more evil than good, hence deprecated it.
 
         /*
         public virtual double CalculateCharge(int usage, int opUse = 0)

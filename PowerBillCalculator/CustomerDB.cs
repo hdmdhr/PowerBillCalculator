@@ -17,7 +17,7 @@ namespace PowerBillCalculator
 
     static class CustomerDB
     {
-        const string path = "../../Customers.txt";
+        const string path = "Customers.txt";
         /// <summary>
         /// Read customer list from a file.
         /// </summary>

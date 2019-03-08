@@ -144,6 +144,7 @@
             // btnAdd
             // 
             this.btnAdd.AutoSize = true;
+            this.btnAdd.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.Location = new System.Drawing.Point(340, 145);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(54, 29);
@@ -155,9 +156,10 @@
             // btnDeduct
             // 
             this.btnDeduct.AutoSize = true;
+            this.btnDeduct.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeduct.Location = new System.Drawing.Point(401, 145);
             this.btnDeduct.Name = "btnDeduct";
-            this.btnDeduct.Size = new System.Drawing.Size(60, 29);
+            this.btnDeduct.Size = new System.Drawing.Size(62, 29);
             this.btnDeduct.TabIndex = 9;
             this.btnDeduct.Text = "&deduct";
             this.btnDeduct.UseVisualStyleBackColor = true;
@@ -179,7 +181,7 @@
             // btnUpdate
             // 
             this.btnUpdate.AutoSize = true;
-            this.btnUpdate.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdate.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdate.Location = new System.Drawing.Point(105, 186);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(81, 31);
@@ -191,7 +193,7 @@
             // btnCancel
             // 
             this.btnCancel.AutoSize = true;
-            this.btnCancel.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.Location = new System.Drawing.Point(240, 186);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(81, 31);

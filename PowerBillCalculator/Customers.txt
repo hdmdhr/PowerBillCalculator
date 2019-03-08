@@ -1,3 +1,5 @@
-102,Daniel Liu,C,150.00
-201,ABC,C,127.50
-301,asdfsa,I,269.50
+201,Avengers,C,172.50
+107,Daniel Hu,R,32.00
+304,Apple Inc.,I,676.30
+307,Google Inc.,I,463.60
+103,Bruce Wayne,R,141.20

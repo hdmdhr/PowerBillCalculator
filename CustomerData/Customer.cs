@@ -53,13 +53,7 @@ namespace CustomerData
         // methods
         public string ToCSV()
         {
-            string str = "";
-            str += accountNo.ToString() + ",";
-            str += CustomerName + ",";
-            str += customerType.ToString() + ",";
-            str += chargeAmount.ToString("f2");
-
-            return str;
+            return AccountNo.ToString() + "," + CustomerName + "," + CustomerType.ToString() + "," + ChargeAmount.ToString("f2");
         }
 
         public override string ToString()

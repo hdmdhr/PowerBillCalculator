@@ -68,8 +68,11 @@ namespace PowerBillCalculator
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (Validator.TBHasNonNegativeDouble(txtAmt, "New Amount"))
+            {
                 ChargeAmount += Convert.ToDouble(txtAmt.Text);
-            // setter of ChargeAmount will do the output
+                // setter of ChargeAmount will do the output
+                txtAmt.Clear();
+            }
         }
 
         // Deduct Btn Clicked: deduct new amount from current amount
@@ -81,6 +84,8 @@ namespace PowerBillCalculator
                     ChargeAmount = 0;
                 else
                     ChargeAmount -= Convert.ToDouble(txtAmt.Text);
+
+                txtAmt.Clear();
             }
         }
 

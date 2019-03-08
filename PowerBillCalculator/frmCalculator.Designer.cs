@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.grpCustType = new System.Windows.Forms.GroupBox();
             this.radIndustrial = new System.Windows.Forms.RadioButton();
@@ -81,6 +82,7 @@
             this.name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.type = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.amt = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tipName = new System.Windows.Forms.ToolTip(this.components);
             this.grpCustType.SuspendLayout();
             this.grpForUsage.SuspendLayout();
             this.grpForIndustrial.SuspendLayout();
@@ -149,6 +151,7 @@
             this.radResidential.Name = "radResidential";
             this.radResidential.Size = new System.Drawing.Size(132, 32);
             this.radResidential.TabIndex = 8;
+            this.radResidential.TabStop = true;
             this.radResidential.Tag = "R";
             this.radResidential.Text = "Residential";
             this.radResidential.UseVisualStyleBackColor = true;
@@ -402,6 +405,8 @@
             this.txtCustName.Name = "txtCustName";
             this.txtCustName.Size = new System.Drawing.Size(105, 28);
             this.txtCustName.TabIndex = 1;
+            this.txtCustName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCustName_KeyDown);
+            this.txtCustName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCustName_KeyPress);
             // 
             // label9
             // 
@@ -707,6 +712,15 @@
             this.amt.Text = "Charge";
             this.amt.Width = 80;
             // 
+            // tipName
+            // 
+            this.tipName.AutoPopDelay = 0;
+            this.tipName.InitialDelay = 500;
+            this.tipName.IsBalloon = true;
+            this.tipName.ReshowDelay = 100;
+            this.tipName.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
+            this.tipName.ToolTipTitle = "Forbidden Input";
+            // 
             // frmCalculator
             // 
             this.AcceptButton = this.btnCalculate;
@@ -824,6 +838,7 @@
         private System.Windows.Forms.ColumnHeader name;
         private System.Windows.Forms.ColumnHeader type;
         private System.Windows.Forms.ColumnHeader amt;
+        private System.Windows.Forms.ToolTip tipName;
     }
 }
 

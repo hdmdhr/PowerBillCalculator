@@ -327,6 +327,21 @@ namespace PowerBillCalculator
             }
         }
 
+        // When User Typing: forbid and show tooltip warning when sees ','
+        private void txtCustName_KeyDown(object sender, KeyEventArgs e)
+        {
+        }
+
+        private void txtCustName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == ',')
+            {
+                e.Handled = true;
+                tipName.Show("No comma should be used.", txtCustName, 20,-80,2500);
+            }
+        }
+
+
 
         /*************** DEPRECATED *********************
          

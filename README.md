@@ -24,7 +24,9 @@ PowerBillCalculator\PowerBillCalculator\bin\Debug.
 ```
 
 ## Built With
-Microsoft Visual Studio Enterprise 2017
+* Microsoft Visual Studio Enterprise 2017
+* Listview Tool - create in-app logging table
+* File I/O - write output customers.txt file
 
 ## Author
 * **DongMing Hu** - *Initial work* - [hdmdhr](https://github.com/hdmdhr)

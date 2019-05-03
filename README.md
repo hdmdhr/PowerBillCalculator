@@ -1,8 +1,8 @@
 # Power Bill Calculator
 ## App Overview
-<kbd>
-  <img src="images/preview.PNG" width="70%" alt="preview">
-</kdb>
+<kbd width="70%">
+  <img src="images/preview.PNG" width="70%" alt="preview"/>
+</kbd>
 <br>
 An Windows desktop electricity bill calculator with logging function.
 

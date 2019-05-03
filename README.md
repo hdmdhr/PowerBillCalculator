@@ -1,18 +1,19 @@
 # Power Bill Calculator
 ## App Overview
-<img src="images/preview.PNG" width="60%" style="border:1px solid black" alt="preview"></img>
+<img src="images/preview.PNG" width="70%" style="border:2px solid black;" alt="preview"></img>
+<br>
 An Windows desktop electricity bill calculator with logging function.
 
 ## How to use
 
 ### Calculation
-<img src="images/calculation.gif" width="80%"></img>
+<img src="images/calculation.gif" width="70%"></img>
 
 ### Add / Delete
-<img src="images/add_delete.gif" width="80%"></img>
+<img src="images/add_delete.gif" width="70%"></img>
 
 ### Edit
-<img src="images/edit.gif" width="80%"></img>
+<img src="images/edit.gif" width="70%"></img>
 
 ## Output logging file
 An customers.txt is auto-generated under directory 

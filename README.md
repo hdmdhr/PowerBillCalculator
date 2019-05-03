@@ -1,5 +1,6 @@
 # Power Bill Calculator
-![Preview image](images/preview.PNG)
+## App Overview
+<img src="images/calculation.PNG" width="60%" style="border:1px solid black"></img>
 An Windows desktop electricity bill calculator with logging function.
 
 ## How to use
